@@ -1,25 +1,30 @@
 import Image from "next/image";
-import { Menu, User, MapPin, Search } from "lucide-react";
+import { Menu, UserRound, MapPin, Search } from "lucide-react";
+import "./style.css";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="logo-area">
-        <Image src="/logo.png" alt="Logo" width={100} height={50} priority />
+        <a href="#">
+        <Image src="/logo.png" alt="Logo" width={120} height={23} priority />
+        </a>
       </div>
 
       <div className="option-area">
-        <div>
-          <button className="btn-hospedagem">Hospedagem</button>
-          <button className="btn-vendas">Vendas</button>
+        <div className="btn-area">
+          <a href="#" className="btn-hospedagem active">Hospedagem</a>
+          <a href="#" className="btn-vendas">Vendas</a>
         </div>
 
         <div className="search-area">
-          <MapPin className="icon" />
-          <div>
-            <p className="search-location">Luanda</p>
-            <p className="search-destination">Escolha o seu destino</p>
-          </div>
+            <div className="search-location-area">
+                <MapPin className="icon-pin" />
+                <div className="search-location-info">
+                    <a href="#" className="search-location">Luanda</a>
+                    <p className="search-destination">Escolha o seu destino</p>
+                </div>
+            </div>
           <form className="search-form">
             <input
               type="text"
@@ -34,12 +39,12 @@ export default function Header() {
       </div>
 
       <div className="menu-area">
-        <button className="menu-icon" aria-label="Abrir Menu">
+        <a href="#" className="menu-icon" aria-label="Abrir Menu">
           <Menu />
-        </button>
-        <button className="user-icon" aria-label="Área do Usuário">
-          <User />
-        </button>
+        </a>
+        <a href="#" className="user-icon" aria-label="Área do Usuário">
+        <UserRound />
+        </a>
       </div>
     </header>
   );
