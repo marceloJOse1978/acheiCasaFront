@@ -1,0 +1,13 @@
+.btn-area a {
+    position: relative;
+}
+
+.btn-area a.active::after {
+    content: "";
+    background: linear-gradient(to right, #EF4444, #FFC371); 
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+}
