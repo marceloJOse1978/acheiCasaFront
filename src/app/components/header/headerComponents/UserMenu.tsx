@@ -23,12 +23,12 @@ export default function UserMenu() {
       </div>
 
       {/* Menu dropdown */}
-      {isMenuOpen && (
+{/*       {isMenuOpen && (
         <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg p-2 border border-gray-200 z-50">
           <Link href="/settings" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Configurações</Link>
           <Link href="/logout" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Sair</Link>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
