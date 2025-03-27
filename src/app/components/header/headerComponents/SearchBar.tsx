@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MapPin, Search } from "lucide-react";
+import "./style.css";
 
 export default function SearchBar() {
   const [selectedLocation, setSelectedLocation] = useState("Luanda");
@@ -40,7 +41,7 @@ export default function SearchBar() {
       </div>
 
       <form className="flex items-center justify-between">
-        <input type="text" className="px-3.5 py-1 border border-white rounded-3xl mx-4 min-w-[400px]" />
+        <input type="text" className="search-input px-3.5 py-1 border border-white rounded-3xl mx-4 transition-all duration-300 ease-in-out" />
         <button type="button" aria-label="Buscar" className="bg-red-500 p-2 rounded-full">
           <Search className="w-[14px] h-[14px] text-[#fff]" />
         </button>

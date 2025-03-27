@@ -11,3 +11,19 @@
     left: 0;
     bottom: -2px;
 }
+
+/* @media screen and (min-width: 900px) {
+    .search-input {
+        min-width: 400px;
+    }
+    
+}
+
+
+@media screen and (max-width: 800px)   {
+    .search-input {
+        width: 40px;
+    }
+    
+}
+ */
