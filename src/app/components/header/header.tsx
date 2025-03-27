@@ -1,8 +1,12 @@
+"use client"
+
 import Image from "next/image";
+import { useState } from "react";
 import { Menu, UserRound, MapPin, Search } from "lucide-react";
 import "./style.css";
 
 export default function Header() {
+  const [activeTab, setActiveTab] = useState("hospedagem");
   return (
     <header className="header">
       <div className="logo-area">
@@ -13,8 +17,10 @@ export default function Header() {
 
       <div className="option-area">
         <div className="btn-area">
-          <a href="#" className="btn-hospedagem active">Hospedagem</a>
-          <a href="#" className="btn-vendas">Vendas</a>
+          <a href="#"  className={`btn-hospedagem ${activeTab === "hospedagem" ? "active" : ""}`}
+            onClick={() => setActiveTab("hospedagem")}>Hospedagem</a>
+          <a href="#"  className={`btn-vendas ${activeTab === "vendas" ? "active" : ""}`}
+            onClick={() => setActiveTab("vendas")}>Vendas</a>
         </div>
 
         <div className="search-area">
@@ -28,22 +34,25 @@ export default function Header() {
           <form className="search-form">
             <input
               type="text"
-              placeholder="Buscar..."
+              placeholder="Pesquisar..."
               className="search-input"
+              id="search-input"
             />
-            <button type="submit" aria-label="Buscar" className="search-button">
-              <Search />
-            </button>
+            <label htmlFor="search-input">
+              <button type="button" aria-label="Buscar" className="search-button">
+              <Search className="w-[14px] h-[14px] text-[#fff]" />
+              </button>
+            </label>
           </form>
         </div>
       </div>
 
       <div className="menu-area">
         <a href="#" className="menu-icon" aria-label="Abrir Menu">
-          <Menu />
+          <Menu className="text-[#F69A59] " />
         </a>
         <a href="#" className="user-icon" aria-label="Área do Usuário">
-        <UserRound />
+        <UserRound className="text-[#F69A59]  " />
         </a>
       </div>
     </header>
