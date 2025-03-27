@@ -3,12 +3,16 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="text-white bg-[#FF453A] flex justify-between items-center h-[220px] w-[100%]">
-      <div className=''>
-        <img src="footer-image.png" alt="" className='' />
-      </div>
-   {/*    <div> */}
-        <div className='flex justify-between bg-yellow-500 w-full' >
+    <footer 
+    className="text-white bg-[#FF453A] items-center h-[220px] w-full relative"
+    >
+        <img 
+        src="/footer-image.png" 
+        alt="Footer Image" 
+        className="absolute left-0 h-full object-contain"
+        />
+        
+        <div className='flex justify-between  w-full' >
             <div className=''>
                 <ul>
                     <li>
@@ -40,7 +44,7 @@ const Footer = () => {
                         <a href="#" className='text-[14px]'>Equipe</a>
                     </li>
                     <li>
-                        <a href="#" className='text-[14px]'>Equipe</a>
+                        <a href="#" className='text-[14px]'>Carreira</a>
                     </li>
                 </ul>
             </div>
@@ -79,31 +83,18 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
+
         </div>
-       {/*  <div className=''>
-            <ul className='flex'>
-                <li><a href="#"><img src="instagram.png" alt="" /></a></li>
+        <div>
+            <ul>
                 <li><a href="#"><img src="whatsapp.png" alt="" /></a></li>
+                <li><a href="#"><img src="instagram.png" alt="" /></a></li>
                 <li><a href="#"><img src="facebook.png" alt="" /></a></li>
             </ul>
-        </div> */}
-{/*       </div> */}
+        </div>
     </footer>
+
   );
 };
 
 export default Footer;
-
-
-      {/* <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-sm">© {new Date().getFullYear()} Your Company. All rights reserved.</p>
-          </div>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-gray-300">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300">Terms of Service</a>
-            <a href="#" className="hover:text-gray-300">Contact</a>
-          </div>
-        </div>
-      </div> */}
