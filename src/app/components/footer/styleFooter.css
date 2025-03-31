@@ -1,0 +1,134 @@
+footer {
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 220px;
+    width: 100%;
+    position: relative;
+    background-color: #FF453A;
+    background-image: url('/footer-image.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0 30px;
+    transition: all  0.3s ease-in-out;
+}
+
+
+.container-element {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.lists {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 15%;
+}
+
+/* Estilização da lista de links */
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li a {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    opacity: 0.9;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+/* Social Media */
+.social-media ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.social-media ul a {
+    opacity: 0.8;
+    transition: all 0.1s ease-in-out;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-media ul a:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+/*     .lists {
+        gap: 10%;
+    } */
+}
+
+@media (max-width: 768px) {
+
+/*     footer {
+        height: auto;
+        padding: 20px 0;
+    }
+    
+    .lists {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .social-media ul {
+        justify-content: center;
+    } */
+}
+
+@media (max-width: 480px) {
+/*     footer {
+        padding: 0 15px;
+        background-size: cover;
+    }
+
+    .container-element {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .lists {
+        gap: 15px;
+    }
+
+    ul li a {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .social-media ul a {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    } */
+}
