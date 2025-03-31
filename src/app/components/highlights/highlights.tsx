@@ -12,7 +12,7 @@ const Highlights = () => {
         <div className="grid-container">
             {casas.map((casa) => (
                 <div key={casa.id} className="">
-                    <figure className='image-thumb'>
+                    <figure className='image-thumb' title={casa.title}>
                         <a href="#">
                             <img src={casa.image} alt={casa.title} className="" />
                         </a>
@@ -31,7 +31,12 @@ const Highlights = () => {
                             <p className="dimensions">{casa.dimensions}</p>
                             <p className="date">{casa.date}</p>
                             </div>
-                            <p className="price">{casa.price}</p>
+                            <p className="price">
+                            {isNaN(Number(casa.price)) 
+                                ? casa.price 
+                                : new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(Number(casa.price))}
+                            </p>
+
                         </div>                        
                     </div>
                 </div>

@@ -55,8 +55,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
+    transition: all 0.3s ease-in-out;
 }
+
+.image-thumb:hover img {
+    scale: 1.05;
+}
+
 .group {
     display: flex;
     align-items: flex-end;
