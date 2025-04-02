@@ -9,7 +9,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Filter />
+      <div className="mt-35 lg:mt-45">
+        <Filter />
+      </div>
       <div>
         <SideMenu />
         <Highlights />

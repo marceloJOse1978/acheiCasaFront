@@ -28,7 +28,7 @@ export default function SearchBar() {
           {isOpen && (
             <ul className="absolute top-full left-0 bg-white border border-gray-300 list-none p-2 m-0 w-44 max-h-[200px] overflow-y-auto shadow-md rounded-md z-10">
               {provinces.map((province) => (
-                <li key={province} className="p-2 cursor-pointer hover:bg-red-500 hover:text-white" onClick={() => {
+                <li key={province} className="text-gray-500 p-2 cursor-pointer hover:bg-red-500 hover:text-white rounded" onClick={() => {
                   setSelectedLocation(province);
                   setIsOpen(false);
                 }}>

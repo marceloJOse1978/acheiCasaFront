@@ -1,10 +1,11 @@
 #sideMenu {
     position: absolute;
     z-index: 100;
-    background-color: rgb(245, 245, 245);
+    background-color: #FFFFFF;
     top: 140px;
     bottom: 0;
     height: 858px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .header-user {

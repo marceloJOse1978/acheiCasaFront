@@ -1,53 +1,43 @@
-.titulo {
-    color:#999999;
-    font-size: 20px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    font-weight: 700;
-    word-spacing: 2px;
-    margin-top: 2em;
-}
-
-.titulo .capitalize {
-    text-transform: capitalize;
-}
-
-.titulo .no-capitalize {
-    margin-right: 6px;
-}
-
-.filter  {
-  margin: 2em 0;
-}
-
-.filter ul {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 50px;
-}
-
-.filter ul li a {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;
-    gap: 5px;
-    transition: all .3s ease;
-}
-
-.filter ul li a:hover {
-    scale: 1.1;
-}
-
-.filter ul li a p {
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    text-transform: capitalize;
+/* container-element */
+/* Estilos para o Swiper */
+.filter-swiper {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .filter-swiper .swiper-pagination {
+    position: relative;
+    margin-top: 15px;
+  }
+  
+  .filter-swiper .swiper-pagination-bullet {
+    background-color: #999999;
+  }
+  
+  .filter-swiper .swiper-pagination-bullet-active {
+    background-color: #666666;
+  }
+  
+  .filter-swiper .swiper-button-next,
+  .filter-swiper .swiper-button-prev {
     color: #999999;
-}
+    transform: scale(0.7);
+  }
+  
+  .filter-swiper .swiper-button-next:hover,
+  .filter-swiper .swiper-button-prev:hover {
+    color: #666666;
+  }
+  
+  /* Sobrescreve a altura padrão do Swiper para garantir espaço suficiente para paginação */
+  .filter-swiper.swiper {
+    padding-bottom: 35px;
+  }
+  
+  /* Ajuste para garantir que os slides fiquem centralizados em telas muito pequenas */
+  @media (max-width: 375px) {
+    .filter-swiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+  }
