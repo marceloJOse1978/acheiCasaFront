@@ -16,7 +16,7 @@ export default function SearchBar() {
   ];
 
   return (
-    <div className="search-area flex items-center justify-between shadow-md p-[6px] bg-white rounded-[45px] mt-3">
+    <div className="search-area flex items-center justify-between shadow-md p-[6px] bg-white rounded-[45px] mt-3 z-50">
       <MapPin className="text-[#999999] w-[18px] h-[18px] mr-[5px]" />
       <div className="relative inline-block">
         <div className="search-location-info leading-none pl-0.5">

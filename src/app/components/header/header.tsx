@@ -8,9 +8,9 @@ import "./style.css"
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 p-2 md:p-4 flex items-center justify-between rounded-b-[25px] shadow-md z-50 bg-white">
+    <header className="fixed top-0 left-0 right-0 p-2 md:p-4 flex items-center justify-between lg:rounded-b-[25px] shadow-md bg-white transition duration-100" style={{ zIndex: 200 }} >
       <Logo />
-      <div className="option-area">
+      <div className="option-area hidden md:block" >
         <NavTabs />
         <SearchBar />
       </div>

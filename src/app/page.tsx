@@ -12,11 +12,11 @@ export default function Home() {
       <div className="mt-35 lg:mt-45">
         <Filter />
       </div>
-      <div>
-        <SideMenu />
+   {/*    <div> */}
+{/*         <SideMenu /> */}
         <Highlights />
-      </div>
-      <Footer />
+{/*       </div> */}
+     {/*  <Footer /> */}
     </>
   );
 }
