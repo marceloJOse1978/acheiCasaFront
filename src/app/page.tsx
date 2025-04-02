@@ -12,11 +12,9 @@ export default function Home() {
       <div className="mt-35 lg:mt-45">
         <Filter />
       </div>
-   {/*    <div> */}
-{/*         <SideMenu /> */}
+      <div className="lg:w-[100%] lg:pl-[260px] lg:pr-[30px] lg:pb-[30px]">
         <Highlights />
-{/*       </div> */}
-     {/*  <Footer /> */}
+      </div>
     </>
   );
 }
