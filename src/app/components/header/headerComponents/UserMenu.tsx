@@ -61,14 +61,14 @@ export default function UserMenu() {
   return (
     <div className="relative">
       {/* Área dos ícones */}
-      <div className="menu-area flex items-center gap-4 p-[0.8em] shadow-md shadow-black/10 rounded-[30px] z-50">
+      <div className="menu-area flex items-center gap-1 md:gap-4 p-[0.1em] md:p-[0.8em] shadow-md shadow-black/10 rounded-[30px] z-50">
         <button 
           className="menu-icon flex items-center justify-center p-2 rounded-full hover:bg-gray-100 transition cursor-pointer lg:hidden"
           onClick={toggleMenu} // Altera a visibilidade do menu ao clicar
         >
           <Menu className="text-red-500 w-6 h-6" />
         </button>
-        <Link href="/profile" className="user-icon flex items-center justify-center p-2 rounded-full hover:bg-gray-100 transition" aria-label="Área do Usuário">
+        <Link href="/profile" className="user-icon flex items-center justify-center p-2 rounded-full hover:bg-gray-100 transition hidden lg:block" aria-label="Área do Usuário">
           <UserRound className="text-red-500 w-6 h-6" />
         </Link>
       </div>
@@ -79,7 +79,7 @@ export default function UserMenu() {
           id="sideMenu" 
           className={`
             fixed z-50 bg-white shadow-[2px_0_10px_rgba(0,0,0,0.1)] 
-            left-[0px] top-[82px] md:top-[108px] lg:top-[126px] bottom-0 
+            left-[0px] top-[79px] md:top-[114px] lg:top-[126px] bottom-0 
             p-4 w-[244px] text-[#999999] lg:rounded-[0px_20px_20px_0px] 
             border border-[#D9D9D9] lg:fixed lg:left-0 lg:bottom-[26px] 
             transition-all duration-300 ease-in-out
@@ -162,7 +162,7 @@ export default function UserMenu() {
       {/* Overlay para fechar o menu ao clicar fora (apenas em telas menores) */}
       {menuOpen && !isLargeScreen && (
         <div 
-        className={`fixed top-[82px] left-0 right-0 bottom-0 bg-black/20 transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`fixed top-[79px] md:top-[114px] left-0 right-0 bottom-0 bg-black/20 transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'}`}
         onClick={toggleMenu}
         aria-hidden="true"
       />
