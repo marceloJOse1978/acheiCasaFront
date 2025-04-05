@@ -6,7 +6,7 @@ import { Star } from 'lucide-react';
 
 const HouseCard = ({ object }: {object:any}) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
+    <div className="bg-white rounded-lg shadow-md p-2">
       <div key={object.id} className="">
             <figure className='w-full h-[300px] rounded-[20px] relative overflow-hidden group' title={object.title}>
                 <a href="#">
