@@ -121,17 +121,17 @@ export default function UserMenu() {
             <li>
                 <a href="/home" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <House width={16} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Home</span>
+                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
                 </a>
               </li>
-              <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+{/*               <li>
+                <a href="/profile" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <House width={16} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Perfil</span>
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <MessageSquareMore width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Mensagem</span>
                 </a>

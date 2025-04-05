@@ -30,9 +30,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <div className="mt-35 lg:mt-45">
-          <Filter />
-        </div>
         <div className="lg:w-[100%] lg:pl-[260px] lg:pr-[30px] lg:pb-[30px]">
           {children}
         </div>

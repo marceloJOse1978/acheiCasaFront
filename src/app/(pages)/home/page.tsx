@@ -5,11 +5,14 @@ import React from 'react'
 import "./home.css"
 import casas from './obje';
 import { Star } from 'lucide-react';
+import Filter from '../../(components)/filter/filter'
 
 const Home = () => {
       
       return (
-        <div id="home" className="grid-container">
+        <div className='flex flex-col w-full'>
+            <Filter visible={false} />
+            <div id="home" className="grid-container">
             {casas.map((casa) => (
                 <div key={casa.id} className="">
                     <figure className='w-full h-[300px] rounded-[20px] relative overflow-hidden group' title={casa.title}>
@@ -17,7 +20,6 @@ const Home = () => {
                             <img src={casa.image} alt={casa.title} className="absolute w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105" />
                         </a>
                     </figure>
-                  
                     <div className="">
                         <div className='flex items-center justify-between mt-2'>
                             <h3 className="font-bold text-xs leading-none tracking-normal capitalize text-[#000]">
@@ -38,12 +40,13 @@ const Home = () => {
                                 ? casa.price 
                                 : new Intl.NumberFormat('pt-AO', { style: 'currency', currency: 'AOA' }).format(Number(casa.price))}
                             </p>
-
                         </div>                        
                     </div>
                 </div>
             ))}
         </div>
+        </div>
+
     );
 }
 
