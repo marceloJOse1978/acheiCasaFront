@@ -124,12 +124,6 @@ export default function UserMenu() {
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
                 </a>
               </li>
-{/*               <li>
-                <a href="/profile" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <House width={16} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Perfil</span>
-                </a>
-              </li> */}
               <li>
                 <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <MessageSquareMore width={18} />
@@ -137,19 +131,19 @@ export default function UserMenu() {
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <a href="/compare" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <GitCompareArrows width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Comparar</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <a href="/notification" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <Bell width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Notificações</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <a href="/settings" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <Settings width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Definições</span>
                 </a>

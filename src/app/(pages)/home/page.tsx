@@ -10,14 +10,14 @@ import HouseCard from '@/app/(components)/houseCard/HouseCard';
 
 const Home = () => {
       return (
-        <div className='flex flex-col w-full'>
+        <section className="mx-auto px-4 py-8 mt-[98px]">
             <Filter visible={false} />
             <div id="home" className="grid-container">
                 {casas.map((casa) => (
                     <HouseCard object={casa} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
 

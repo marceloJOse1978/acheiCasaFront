@@ -8,13 +8,11 @@ import Filter from '../../(components)/filter/filter'
 
 const Dashboard = () => {
   return (
-    
-      <section className="mx-auto px-4 py-8">
-        <Filter visible={true} />
-        <DashHome />
-        <Find />
-      </section>
-    
+    <section className="mx-auto px-4 py-8 mt-[98px]">
+      <Filter visible={true} />
+      <DashHome />
+      <Find />
+    </section>
   )
 }
 

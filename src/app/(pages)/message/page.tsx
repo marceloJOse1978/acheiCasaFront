@@ -6,12 +6,12 @@ import Filter from '../../(components)/filter/filter'
 
 const Message = () => {
   return (
-    <div className="flex flex-col w-full">
-        <Filter visible={true} />
-        <div>
-          <h1>Messages</h1>
-        </div>
-    </div>
+    <section className="mx-auto px-4 py-8 mt-[98px]">
+      <Filter visible={true} />
+      <div>
+        <h1 className='text-[#000]'>Messages</h1>
+      </div>
+    </section>
   )
 }
 

@@ -59,7 +59,7 @@ export default function Filter({ visible }: { visible: boolean }) {
     <div
       id="filter" 
       className={`${
-        !visible ? 'mt-[60px] lg:mt-[140px]' : 'mt-[75px] lg:mt-[100px]'
+        !visible ? 'mt-[-80px] lg:mt-[0px]' : 'mt-[-50px] lg:mt-[-20px]'
       }`} // Condicional para classe mt
     >
       {!visible && (
