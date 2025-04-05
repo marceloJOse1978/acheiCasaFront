@@ -2,14 +2,14 @@
 'use client'
 
 import React from 'react'
-import "./highlights.css"
+import "./home.css"
 import casas from './obje';
 import { Star } from 'lucide-react';
 
-const Highlights = () => {
+const Home = () => {
       
       return (
-        <div id="highlights" className="grid-container">
+        <div id="home" className="grid-container">
             {casas.map((casa) => (
                 <div key={casa.id} className="">
                     <figure className='w-full h-[300px] rounded-[20px] relative overflow-hidden group' title={casa.title}>
@@ -47,4 +47,4 @@ const Highlights = () => {
     );
 }
 
-export default Highlights
+export default Home

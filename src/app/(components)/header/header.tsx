@@ -4,7 +4,6 @@ import Logo from "./headerComponents/Logo";
 import NavTabs from "./headerComponents/NavTabs";
 import SearchBar from "./headerComponents/SearchBar";
 import UserMenu from "./headerComponents/UserMenu";
-import "./style.css"
 
 export default function Header() {
   return (

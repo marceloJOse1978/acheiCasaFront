@@ -1,4 +1,4 @@
-#highlights {
+#home {
     display: grid;
     grid-template-columns: 1fr; 
     position:relative;
@@ -8,33 +8,33 @@
 
 /* Tablet pequeno */
 @media (min-width: 500px) {
-    #highlights {
+    #home {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Tablet grande */
 @media (min-width: 750px) {
-    #highlights {
+    #home {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 900px) {
-    #highlights {
+    #home {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 /* Desktop */
 @media (min-width: 1200px) {
-    #highlights {
+    #home {
         grid-template-columns: repeat(5, 1fr);
     }
 }
 
 @media (max-width:1200px){
-    #highlights {
+    #home {
         padding: 15px;
     }
 }
