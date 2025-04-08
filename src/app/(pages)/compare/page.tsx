@@ -3,46 +3,43 @@
 import React from 'react'
 import {ChevronDown, ChevronUp, ListFilter} from 'lucide-react'
 import HouseCompare from '@/app/(components)/houseCard/HouseCompare';
+import TopCompare from './compareComponents/topCompare';  
 import casas from './compareComponents/obje';
-// import Swiper JS
-import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/css';
-import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const Compare = () => {
   return (
     <section className="mx-auto px-4 py-8 mt-[98px] ">
-      <div className="flex items-center justify-between cursor-pointer">
-        <div>
-          <h1 className='font-bold text-[18px] lg:text-[26px] leading-[100%] tracking-[0] text-[#000]'>Comparar Ou Alugar</h1>
-          <button type="button" className='mt-3 rounded-[10px] bg-white rounded-lg shadow-md p-3 text-[#999999] font-normal italic text-[11px] leading-[100%] tracking-[0] capitalize '>Sem Filtro</button>
-        </div>
-        <div className='p-[0.8em] shadow-md shadow-black/10 rounded-[30px] '>
-          <ListFilter className='text-[#FF453A]' />
-        </div>
+      <TopCompare />
+    
+      <div className='mt-[30px] mb-[30px]'>
+        <ul className='flex text-[#999999] gap-[25px]'>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Cômodos</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Localização</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Área útil</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Quartos</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Banheiros</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Máx. N° de pessoas</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Restaurantes</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Lazer</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Refeições</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Tipo de Edifício</a></li>
+          <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Andar</a></li>
+        </ul>
       </div>
-      <div>
-
-      </div>
-      <div className='flex items-start justify-start gap-[20px]'>
-        <div className='min-w-[200px] bg-red-100'>
-          <div className='w-[58px] h-[58px] bg-[#FF453A] flex items-center justify-center cursor-pointer rounded-lg mt-[100px] m-[37%]'>
+      <div className='flex items-start justify-start gap-[30px]'>
+        <div className='min-w-[200px]'>
+          <div className='w-[58px] h-[58px] bg-[#FF453A] flex items-center justify-center cursor-pointer rounded-lg mt-[130px] m-[37%]'>
             <span className='text-white text-[50px]'>+</span>
           </div>
-          <ul className='font-bold text-[13px] leading-none tracking-normal text-right text-[#999999] mt-[300px]'>
+          <ul className='font-bold text-[13px] leading-none tracking-normal text-right text-[#999999] mt-[240px]'>
             <li>Área Útil:</li>
-            <li>N° de Quartos:</li>
-            <li>N° de Banheiros:</li>
-            <li>N° Máximo de Pessoas:</li>
-            <li>N° de Refeições:</li>
+            <li className='mt-10'>N° de Quartos:</li>
+            <li className='mt-19'>N° de Banheiros:</li>
+            <li className='mt-20'>N° Máximo de Pessoas:</li>
+            <li className='mt-12'>N° de Refeições:</li>
           </ul>
         </div>
-        <div className='w-full flex items-start justify-between overflow-x-hidden'>
+        <div className='w-full flex items-start justify-between'>
           {casas.map((casa) => (
               <HouseCompare key={casa.id} object={casa} />
             ))} 
