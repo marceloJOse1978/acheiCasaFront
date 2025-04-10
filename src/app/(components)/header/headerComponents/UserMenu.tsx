@@ -111,7 +111,7 @@ export default function UserMenu() {
           ))}
 
           <div className='mt-2'>
-            <a href="/dashboard" className="flex items-center space-x-3 p-2">
+            <a href="/dashboard" className="flex items-center space-x-3 p-2 hover:text-white hover:bg-[#FF453A] transition duration-100 rounded-lg select-none">
               <LayoutDashboard /> 
               <p className='font-semibold text-[12px] lg:text-[18px] leading-[100%] tracking-[0%] select-none'>Dashboard</p>
             </a>
@@ -120,41 +120,46 @@ export default function UserMenu() {
           <nav className="mt-3">
             <ul className="space-y-2">
             <li>
-                <a href="/" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                {/* <a href="/" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <House width={16} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
-                </a>
+                </a> */}
+                <ListButtonLink text='Início' hrefLink='/' total={""} active={false} />
               </li>
-              <li><ListButtonLink text='exemplo' hrefLink='/' total={13} active={true} /></li>
               <li>
-                <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                {/* <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <MessageSquareMore width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Mensagem</span>
-                </a>
+                </a> */}
+                <ListButtonLink text='Mensagem' hrefLink='/message' total={""} active={false} />
               </li>
               <li>
-                <a href="/compare" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <ListButtonLink text='Comparar' hrefLink='/compare' total={""} active={false} />
+                {/* <a href="/compare" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <GitCompareArrows width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Comparar</span>
-                </a>
+                </a> */}
               </li>
               <li>
-                <a href="/notification" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <ListButtonLink text='Notificações' hrefLink='/notification' total={""} active={false} />
+                {/* <a href="/notification" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <Bell width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Notificações</span>
-                </a>
+                </a> */}
               </li>
               <li>
-                <a href="/settings" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <ListButtonLink text='Definições' hrefLink='/settings' total={""} active={false} />
+                {/* <a href="/settings" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <Settings width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Definições</span>
-                </a>
+                </a> */}
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <ListButtonLink text='Sair' hrefLink='#' total={""} active={false} />
+                {/* <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <Power width={18} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Sair</span>
-                </a>
+                </a> */}
               </li>
             </ul>
           </nav>
