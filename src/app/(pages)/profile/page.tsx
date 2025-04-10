@@ -1,21 +1,14 @@
 import { Pencil } from 'lucide-react';
 import users from './obje'; 
-import ShowInformation from './profileComponents/litleComponents/ShowInformation';
-import Title from './profileComponents/litleComponents/title';
-import CommunButton from '@/app/(components)/buttons/communButon';
+import ShowInformation from './(ProfileComponents)/ShowInformation';
+import Title from './(ProfileComponents)/Title';
+import MenuProfile from './(ProfileComponents)/MenuProfile';
+import EditButon from './(ProfileComponents)/EditButton';
 
 export default function Profile(){
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
-            <div className='mb-6 mt-1 flex items-center justify-between'>
-                <p className='text-[#000] font-bold text-2xl leading-none tracking-normal'>Ediar Perfil</p>
-                <ul className="flex items-center justify-start gap-4">
-                    <li><CommunButton text='Perfil do Usuário' hrefLink='#' active={true} /></li>
-                    <li><CommunButton text='Meus Anúncios' hrefLink='#' active={false} /></li>
-                    <li><CommunButton text='Histórico de Negociação' hrefLink='#' active={false} /></li>
-                    <li><CommunButton text='favoritos' hrefLink='#' active={false} /></li>
-                </ul>
-            </div>
+            <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
                 <div className='flex items-center justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(238,238,238)]'>
                     {users.map((user) => (
@@ -30,10 +23,7 @@ export default function Profile(){
                         </div>
                     </div>
                     ))}
-                    <button type="button" className='flex items-center justify-center gap-2 bg-[#FF453A] text-white rounded-[30px] py-2 px-4 mt-4  cursor-pointer hover:bg-[#fff] hover:text-[#FF453A] transition border border-[#FF453A]'>
-                        <span className='font-semibold text-base leading-none tracking-normal text-center'>Editar</span>
-                        <Pencil />
-                    </button>
+                    <EditButon />
                 </div>
                 <div className='flex items-start justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(283,283,283)] mt-5'>
                     <div>
@@ -46,10 +36,7 @@ export default function Profile(){
                             <ShowInformation keyText='Biografia' keyValue={users[0].bio} />
                         </div>
                     </div>
-                    <button type="button" className='flex items-center justify-center gap-2 bg-[#FF453A] text-white rounded-[30px] py-2 px-4 mt-4  cursor-pointer hover:bg-[#fff] hover:text-[#FF453A] transition border border-[#FF453A]'>
-                        <span className='font-semibold text-base leading-none tracking-normal text-center'>Editar</span>
-                        <Pencil />
-                    </button>
+                    <EditButon />
                 </div>
                 <div className='flex items-start justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(283,283,283)] mt-5'>
                     <div>
@@ -61,13 +48,9 @@ export default function Profile(){
                             <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} />
                         </div>
                     </div>
-                    <button type="button" className='flex items-center justify-center gap-2 bg-[#FF453A] text-white rounded-[30px] py-2 px-4 mt-4  cursor-pointer hover:bg-[#fff] hover:text-[#FF453A] transition border border-[#FF453A]'>
-                        <span className='font-semibold text-base leading-none tracking-normal text-center'>Editar</span>
-                        <Pencil />
-                    </button>
+                    <EditButon />
                 </div>
             </div>
-
         </section>
     )
 }
