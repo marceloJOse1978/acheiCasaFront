@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import casas from './obje';
+import casas from '../../../objects/houses';
 import HouseCard from '@/app/(components)/Cards/HouseCard';
 
 const DashHome = () => {

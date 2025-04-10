@@ -15,6 +15,9 @@ const user = [
         "province": "Icole Bengo",
         "city": "Sequele",
         "postalCode": "12345",
+        "createdAt": "2023-09-29T12:00:00Z",
+        "updatedAt": "2023-09-29T12:00:00Z",
+        "balance":10000000
     }
 ]
 

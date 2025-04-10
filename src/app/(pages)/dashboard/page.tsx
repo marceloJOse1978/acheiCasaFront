@@ -2,11 +2,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Find from './DashboardComponents/find'
-import DashHome from './DashboardComponents/dashHome'
+import Find from './DashboardComponents/DashboardFind'
+import DashHome from './DashboardComponents/DashboardHome'
 import Filter from '../../(components)/Filter/filter'
 import Loader from '@/app/(components)/Loader/loader'
-import Balance from './DashboardComponents/Balance'
+import Balance from './DashboardComponents/DashboardBalance'
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true)
