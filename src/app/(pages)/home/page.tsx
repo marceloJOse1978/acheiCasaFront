@@ -2,21 +2,33 @@
 'use client'
 
 import React from 'react'
+import { useState, useEffect } from 'react';
 import "./home.css"
 import casas from './obje';
 import Filter from '../../(components)/Filter/filter'
 import HouseCard from '@/app/(components)/Cards/HouseCard';
+import Loader from '@/app/(components)/Loader/loader'
 
 const Home = () => {
-      return (
-        <section className="mx-auto px-4 py-8 mt-[98px]">
-            <Filter visible={false} />
-            <div id="home" className="grid grid-cols-1 relative gap-[35px] py-[30px]">
-                {casas.map((casa) => (
-                    <HouseCard object={casa} />
-                ))}
-            </div>
-        </section>
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setLoading(false)
+        }, 1500)
+
+        return () => clearTimeout(timer)
+    }, [])
+
+    if (loading) return <Loader />
+    return (
+    <section className="mx-auto px-4 py-8 mt-[98px]">
+        <Filter visible={false} />
+        <div id="home" className="grid grid-cols-1 relative gap-[35px] py-[30px]">
+            {casas.map((casa) => (
+                <HouseCard object={casa} />
+            ))}
+        </div>
+    </section>
     );
 }
 

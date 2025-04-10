@@ -1,11 +1,25 @@
+"use client";
+
 import users from '../../objects/obje'; 
+import React, { useState, useEffect } from 'react';
 import ShowInformation from './(ProfileComponents)/ShowInformation';
 import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/MenuProfile';
 import EditButon from './(ProfileComponents)/EditButton';
 import ProfileContainer from './(ProfileComponents)/ProfileContainer'
+import Loader from '@/app/(components)/Loader/loader'
 
 export default function Profile(){
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setLoading(false)
+        }, 1500)
+
+        return () => clearTimeout(timer)
+    }, [])
+
+    if (loading) return <Loader />
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />

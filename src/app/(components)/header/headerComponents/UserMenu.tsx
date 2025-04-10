@@ -59,6 +59,13 @@ export default function UserMenu() {
     };
   }, []);
 
+  const [activeLink, setActiveLink] = useState<string>('');
+
+  const handleClick = (href: string): void => {
+    setActiveLink(href);
+  };
+  
+
   return (
     <div className="relative">
       {/* Área dos ícones */}
@@ -111,55 +118,77 @@ export default function UserMenu() {
           ))}
 
           <div className='mt-2'>
-            <a href="/dashboard" className="flex items-center space-x-3 p-2 hover:text-white hover:bg-[#FF453A] transition duration-100 rounded-lg select-none">
-              <LayoutDashboard /> 
-              <p className='font-semibold text-[12px] lg:text-[18px] leading-[100%] tracking-[0%] select-none'>Dashboard</p>
-            </a>
+            <ListButtonLink
+              text='Dashboard'
+              hrefLink='/dashboard'
+              total=""
+              active={activeLink === '/dashboard'}
+              icon={LayoutDashboard}
+              onClick={() => handleClick('/dashboard')}
+            />
           </div>
 
           <nav className="mt-3">
             <ul className="space-y-2">
-            <li>
-                {/* <a href="/" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <House width={16} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
-                </a> */}
-                <ListButtonLink text='Início' hrefLink='/' total={""} active={false} />
+              <li>
+                <ListButtonLink
+                text='Início'
+                hrefLink='/'
+                total=""
+                active={activeLink === '/'}
+                icon={House}
+                onClick={() => handleClick('/')}
+              />
               </li>
               <li>
-                {/* <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <MessageSquareMore width={18} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Mensagem</span>
-                </a> */}
-                <ListButtonLink text='Mensagem' hrefLink='/message' total={""} active={false} />
+                <ListButtonLink
+                text='Mensagem'
+                hrefLink='/message'
+                total=""
+                active={activeLink === '/message'}
+                icon={MessageSquareMore}
+                onClick={() => handleClick('/message')}
+              />
               </li>
               <li>
-                <ListButtonLink text='Comparar' hrefLink='/compare' total={""} active={false} />
-                {/* <a href="/compare" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <GitCompareArrows width={18} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Comparar</span>
-                </a> */}
+                <ListButtonLink
+                text='Comparar'
+                hrefLink='/compare'
+                total=""
+                active={activeLink === '/compare'}
+                icon={GitCompareArrows}
+                onClick={() => handleClick('/compare')}
+              />
               </li>
               <li>
-                <ListButtonLink text='Notificações' hrefLink='/notification' total={""} active={false} />
-                {/* <a href="/notification" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <Bell width={18} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Notificações</span>
-                </a> */}
+                <ListButtonLink
+                text='Notificações'
+                hrefLink='/notification'
+                total="+9"
+                active={activeLink === '/notification'}
+                icon={Bell}
+                onClick={() => handleClick('/notification')}
+              />
               </li>
               <li>
-                <ListButtonLink text='Definições' hrefLink='/settings' total={""} active={false} />
-                {/* <a href="/settings" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <Settings width={18} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Definições</span>
-                </a> */}
+                <ListButtonLink
+                text='Definições'
+                hrefLink='/settings'
+                total=""
+                active={activeLink === '/settings'}
+                icon={Settings}
+                onClick={() => handleClick('/settings')}
+              />
               </li>
               <li>
-                <ListButtonLink text='Sair' hrefLink='#' total={""} active={false} />
-                {/* <a href="#" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
-                  <Power width={18} />
-                  <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Sair</span>
-                </a> */}
+                <ListButtonLink
+                text='Sair'
+                hrefLink='#'
+                total=""
+                active={activeLink === '#'}
+                icon={Power}
+                onClick={() => handleClick('#')}
+              />
               </li>
             </ul>
           </nav>

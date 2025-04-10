@@ -1,19 +1,35 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { UserRound, Bell, GitCompareArrows, House, MessageSquareMore, Power, Settings, LayoutDashboard, Menu } from 'lucide-react';
-import './pendente.css'
+import React from 'react';
+import Link from 'next/link';
+import { LucideIcon } from 'lucide-react';
+import './pendente.css';
 
-const ListButtonLink = ({text, hrefLink, total, active}:{text:string; hrefLink:string, total:string; active:boolean;}) => {
-  return (
-    <a href={hrefLink} id='olink' className={`flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none relative ${
-        active ? 'bg-[#FF453A] text-white' : 'bg-white'
-      }`}>
-        <House width={16} />
-        <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>{text}</span>
-        <span className='fon-bold absolute total'>{total}</span>
-    </a>
-  )
+interface ListButtonLinkProps {
+  text: string;
+  hrefLink: string;
+  total: string;
+  active: boolean;
+  icon: LucideIcon;
+  onClick?: () => void;
 }
 
-export default ListButtonLink
+const ListButtonLink = ({ text, hrefLink, total, active, icon: Icon, onClick }: ListButtonLinkProps) => {
+  return (
+    <Link href={hrefLink} passHref legacyBehavior>
+      <a
+        onClick={(e) => {
+          onClick && onClick(); 
+        }}
+        className={`flex items-center space-x-3 p-2 rounded-lg select-none transition duration-100 
+          ${active ? 'bg-[#FF453A] text-white' : 'hover:bg-[#FF453A] hover:text-white text-gray-700'}`}
+      >
+        <Icon />
+        <p className='font-semibold text-[12px] lg:text-[18px] leading-[100%] tracking-[0%]'>{text}</p>
+        {total && <span className="ml-auto text-xs bg-white text-red-600 rounded-full px-2">{total}</span>}
+      </a>
+    </Link>
+  );
+};
+
+export default ListButtonLink;
