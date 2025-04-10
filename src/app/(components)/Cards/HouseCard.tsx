@@ -3,7 +3,7 @@
 
 import React from 'react'
 import { Star } from 'lucide-react';
-import Card from './cardComponents/card';
+import Card from './CardComponents/card';
 
 const HouseCard = ({ object }: {object:any}) => {
   return (

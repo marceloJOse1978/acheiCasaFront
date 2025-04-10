@@ -2,9 +2,9 @@
 
 import React from 'react'
 import {ChevronDown, ChevronUp, ListFilter} from 'lucide-react'
-import HouseCompare from '@/app/(components)/houseCard/HouseCompare';
+import HouseCompare from '@/app/(components)/Cards/HouseCompare';
 import TopCompare from './compareComponents/topCompare';  
-import casas from './compareComponents/obje';
+import casas from '../../objects/houses';
 
 const Compare = () => {
   return (

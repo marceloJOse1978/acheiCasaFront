@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { UserRound, Bell, GitCompareArrows, House, MessageSquareMore, Power, Settings, LayoutDashboard, Menu } from 'lucide-react';
 import Link from "next/link";
-import users from './obje'; 
+import users from '../../../objects/obje'; 
+import ListButtonLink from '../../Buttons/ListButtonLink';
 import "./style.css"
 
 export default function UserMenu() {
@@ -119,11 +120,12 @@ export default function UserMenu() {
           <nav className="mt-3">
             <ul className="space-y-2">
             <li>
-                <a href="/home" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
+                <a href="/" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <House width={16} />
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
                 </a>
               </li>
+              <li><ListButtonLink text='exemplo' hrefLink='/' total={13} /></li>
               <li>
                 <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <MessageSquareMore width={18} />

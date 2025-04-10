@@ -1,0 +1,26 @@
+.total {
+    right: 10px;
+/*     border: 1px solid #999999; */
+    /* padding: 2px; */
+/*     width: 16px;
+    height: 16px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 10px;
+}
+
+.total:hover  {
+
+}
+
+#olink:hover .total  {
+/*     background-color: #fff; */
+/*     border: 1px solid #FF453A;
+    color: #FF453A; */
+/*     width: 20px;
+    height: 20px; */
+    font-size: 12px;
+}

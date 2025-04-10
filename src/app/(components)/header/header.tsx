@@ -1,9 +1,9 @@
 "use client";
 
-import Logo from "./headerComponents/Logo";
-import NavTabs from "./headerComponents/NavTabs";
-import SearchBar from "./headerComponents/SearchBar";
-import UserMenu from "./headerComponents/UserMenu";
+import Logo from "./HeaderComponents/Logo";
+import NavTabs from "./HeaderComponents/NavTabs";
+import SearchBar from "./HeaderComponents/SearchBar";
+import UserMenu from "./HeaderComponents/UserMenu";
 
 export default function Header() {
   return (
@@ -11,9 +11,7 @@ export default function Header() {
       <NavTabs />
       <div className=" flex items-center justify-evenly md:justify-between  gap-3"> 
         <Logo />
-        <div className="option-area  md:block">
-          <SearchBar />
-        </div>
+        <SearchBar />
         <UserMenu />
       </div>
     </header>

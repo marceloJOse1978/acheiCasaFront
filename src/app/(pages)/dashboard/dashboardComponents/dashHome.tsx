@@ -2,7 +2,7 @@
 
 import React from 'react'
 import casas from './obje';
-import HouseCard from '@/app/(components)/houseCard/HouseCard';
+import HouseCard from '@/app/(components)/Cards/HouseCard';
 
 const DashHome = () => {
   return (

@@ -1,4 +1,4 @@
-import CommunButton from '@/app/(components)/buttons/communButon';
+import CommunButton from '@/app/(components)/Buttons/CommunButtonLink';
 
 
 export default function MenuProfile (

@@ -2,9 +2,9 @@
 'use client'
 
 import React from 'react'
-import Find from './dashboardComponents/find'
-import DashHome from './dashboardComponents/dashHome'
-import Filter from '../../(components)/filter/filter'
+import Find from './DashboardComponents/find'
+import DashHome from './DashboardComponents/dashHome'
+import Filter from '../../(components)/Filter/filter'
 
 const Dashboard = () => {
   return (

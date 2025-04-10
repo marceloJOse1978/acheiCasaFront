@@ -5,8 +5,8 @@ import React from 'react'
 import "./home.css"
 import casas from './obje';
 import { Star } from 'lucide-react';
-import Filter from '../../(components)/filter/filter'
-import HouseCard from '@/app/(components)/houseCard/HouseCard';
+import Filter from '../../(components)/Filter/filter'
+import HouseCard from '@/app/(components)/Cards/HouseCard';
 
 const Home = () => {
       return (

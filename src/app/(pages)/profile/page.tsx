@@ -1,4 +1,4 @@
-import users from './obje'; 
+import users from '../../objects/obje'; 
 import ShowInformation from './(ProfileComponents)/ShowInformation';
 import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/MenuProfile';

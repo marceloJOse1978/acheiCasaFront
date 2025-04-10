@@ -2,7 +2,7 @@
 'use client'
 
 import React from 'react'
-import Filter from '../../(components)/filter/filter'
+import Filter from '../../(components)/Filter/filter'
 
 const Message = () => {
   return (

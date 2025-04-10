@@ -3,8 +3,8 @@
 
 import React from 'react'
 import { Star, Users } from 'lucide-react';
-import CompareFigures from './cardComponents/compareFigures';
-import Card from './cardComponents/card';
+import CompareFigures from './CardComponents/compareFigures';
+import Card from './CardComponents/card';
 
 const HouseCard = ({ object }: {object:any}) => {
   return (
