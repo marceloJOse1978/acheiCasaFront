@@ -125,7 +125,7 @@ export default function UserMenu() {
                   <span className='font-semibold text-[14px] leading-[100%] tracking-[0%]'>Início</span>
                 </a>
               </li>
-              <li><ListButtonLink text='exemplo' hrefLink='/' total={13} /></li>
+              <li><ListButtonLink text='exemplo' hrefLink='/' total={13} active={true} /></li>
               <li>
                 <a href="/message" className="flex items-center space-x-3 p-2 hover:bg-[#FF453A] hover:text-white rounded-lg transition duration-100 select-none">
                   <MessageSquareMore width={18} />
