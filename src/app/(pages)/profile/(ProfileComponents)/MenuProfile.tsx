@@ -1,5 +1,6 @@
 import CommunButton from '@/app/(components)/buttons/communButon';
 
+
 export default function MenuProfile (
     {
         profile, 

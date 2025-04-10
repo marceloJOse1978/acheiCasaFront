@@ -1,16 +1,16 @@
-import { Pencil } from 'lucide-react';
 import users from './obje'; 
 import ShowInformation from './(ProfileComponents)/ShowInformation';
 import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/MenuProfile';
 import EditButon from './(ProfileComponents)/EditButton';
+import ProfileContainer from './(ProfileComponents)/ProfileContainer'
 
 export default function Profile(){
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
-                <div className='flex items-center justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(238,238,238)]'>
+                <ProfileContainer marginTop={0}>
                     {users.map((user) => (
                     <div key={user.id} className="flex items-center justify-start gap-4">
                         <figure className='w-[130px] h-[130px] rounded-full p-[5px] bg-[#FF453A] shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden select-none'>
@@ -18,15 +18,15 @@ export default function Profile(){
                         </figure>
                         <div>
                             <p className="font-bold text-2xl leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
-                            <p className="my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none">{user.role}</p>
-                            <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999]'>{user.address}</p>
+                            <p className='my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none'>{user.role}</p>
+                            <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
                         </div>
                     </div>
                     ))}
                     <EditButon />
-                </div>
-                <div className='flex items-start justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(283,283,283)] mt-5'>
-                    <div>
+                </ProfileContainer>
+                <ProfileContainer marginTop={0}>
+                    <div className=''>
                         <Title text='Informações Pessoais' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
                             <ShowInformation keyText='Primeiro Nome' keyValue={users[0].firstName} />
@@ -37,9 +37,9 @@ export default function Profile(){
                         </div>
                     </div>
                     <EditButon />
-                </div>
-                <div className='flex items-start justify-between shadow-lg rounded-lg bg-white py-5 px-10 border border-[rbg(283,283,283)] mt-5'>
-                    <div>
+                </ProfileContainer>
+                <ProfileContainer marginTop={0}>
+                    <div className=''>
                         <Title text='Endereço' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
                             <ShowInformation keyText='Primeiro Nome' keyValue={users[0].country} />
@@ -49,7 +49,7 @@ export default function Profile(){
                         </div>
                     </div>
                     <EditButon />
-                </div>
+                </ProfileContainer>
             </div>
         </section>
     )
