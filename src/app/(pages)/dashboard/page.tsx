@@ -6,6 +6,7 @@ import Find from './DashboardComponents/find'
 import DashHome from './DashboardComponents/dashHome'
 import Filter from '../../(components)/Filter/filter'
 import Loader from '@/app/(components)/Loader/loader'
+import Balance from './DashboardComponents/Balance'
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true)
@@ -23,6 +24,7 @@ const Dashboard = () => {
       <Filter visible={true} />
       <DashHome />
       <Find />
+      <Balance />
     </section>
   )
 }
