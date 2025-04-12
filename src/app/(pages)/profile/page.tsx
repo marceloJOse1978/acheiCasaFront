@@ -2,15 +2,19 @@
 
 import users from '../../objects/obje'; 
 import React, { useState, useEffect } from 'react';
-import ShowInformation from './(ProfileComponents)/ShowInformation';
+import ShowInformation from './(ProfileComponents)/ProfileInformation';
 import Title from './(ProfileComponents)/Title';
-import MenuProfile from './(ProfileComponents)/MenuProfile';
-import EditButon from './(ProfileComponents)/EditButton';
+import MenuProfile from './(ProfileComponents)/ProfileMenu';
+import EditButon from './(ProfileComponents)/ProfileEditButton';
 import ProfileContainer from './(ProfileComponents)/ProfileContainer'
 import Loader from '@/app/(components)/Loader/loader'
+import ProfileSave from './(ProfileComponents)/ProfileSave'
+import { Pencil } from 'lucide-react';
 
 export default function Profile(){
     const [loading, setLoading] = useState(true)
+    const [isEditing, setIsEditing] = useState(false);
+
     useEffect(() => {
         const timer = setTimeout(() => {
         setLoading(false)
@@ -18,6 +22,11 @@ export default function Profile(){
 
         return () => clearTimeout(timer)
     }, [])
+
+    const handleEditClick = () => {
+        setIsEditing(prev => !prev);
+        console.log("Editar");
+    };
 
     if (loading) return <Loader />
     return (
@@ -37,22 +46,25 @@ export default function Profile(){
                         </div>
                     </div>
                     ))}
-                    <EditButon />
+                   {/*  <EditButon onClick={handleEditClick} /> */}
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
                     <div className=''>
                         <Title text='Informações Pessoais' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].firstName} />
-                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].lastName} />
-                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].email} />
-                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].phone} />
-                            <ShowInformation keyText='Biografia' keyValue={users[0].bio} />
+                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].firstName} isEditable={isEditing} />
+                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].lastName} isEditable={isEditing} />
+                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].email} isEditable={isEditing} />
+                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].phone} isEditable={isEditing} />
+                            <ShowInformation keyText='Biografia' keyValue={users[0].bio} isEditable={isEditing} />
                         </div>
                     </div>
-                    <EditButon />
+                    <div className='bg-red-100'>
+                        <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
+                        <ProfileSave />
+                    </div>
                 </ProfileContainer>
-                <ProfileContainer marginTop={0}>
+                {/* <ProfileContainer marginTop={0}>
                     <div className=''>
                         <Title text='Endereço' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
@@ -62,8 +74,8 @@ export default function Profile(){
                             <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} />
                         </div>
                     </div>
-                    <EditButon />
-                </ProfileContainer>
+                    <EditButon onClick={handleEditClick} />
+                </ProfileContainer> */}
             </div>
         </section>
     )

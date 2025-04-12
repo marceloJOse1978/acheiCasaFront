@@ -1,4 +1,4 @@
-interface Notification {
+export interface Notification {
     id: string
     titulo: string
     data: string

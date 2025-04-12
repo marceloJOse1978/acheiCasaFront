@@ -1,10 +1,11 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import MenuProfile from '../../(ProfileComponents)/MenuProfile';
+import MenuProfile from '../../(ProfileComponents)/ProfileMenu';
 import ProfileContainer from '../../(ProfileComponents)/ProfileContainer';
 import Loader from '@/app/(components)/Loader/loader'
+import ProfileAnnouncementCard from '../../(ProfileComponents)/ProfileAnnouncementCard';
 
-export default function Anuncio () {
+export default function Announcement () {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -19,7 +20,7 @@ export default function Anuncio () {
         <div className="mx-auto px-4 py-8 mt-[98px]">
             <MenuProfile profile={false} anuncio={true} history={false} favorite={false} title='Gerir Anúncios'/>
             <ProfileContainer marginTop={0}>
-                <p className='text-[#000]'>Anuncio</p>
+                <ProfileAnnouncementCard />
             </ProfileContainer>
         </div>
     )

@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
-import MenuProfile from '../../(ProfileComponents)/MenuProfile';
+import MenuProfile from '../../(ProfileComponents)/ProfileMenu';
 import ProfileContainer from '../../(ProfileComponents)/ProfileContainer';
 import Loader from '@/app/(components)/Loader/loader'
 
