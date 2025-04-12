@@ -1,51 +1,52 @@
 const announcement = [
-    {
-      id: 1,
-      titulo: "Sequele, Cacuaco",
-      preco: "1.500.000,00",
-      dimensoes: "15×20m",
-      status: "Inactivo", // ou "Activo"
-      visualizacoes: 3034,
-      favoritos: 1567,
-      imagem: "https://i.ibb.co/Y4XmbyQs/12210e817bc81b3c098f358fe631496c.jpg", // substituir com URL real
-    },
-    {
-      id: 2,
-      titulo: "Sequele, Cacuaco",
-      preco: "1.500.000,00",
-      dimensoes: "15×20m",
-      status: "Activo",
-      visualizacoes: 3034,
-      favoritos: 1567,
-      imagem: "https://i.ibb.co/wZMq67Rb/c691e7f1da8c4e06a451d3689a840f10.jpg",
-    },
-    {
-      id: 3,
-      titulo: "Sequele, Cacuaco",
-      preco: "1.500.000,00",
-      dimensoes: "15×20m",
-      status: "Inactivo",
-      visualizacoes: 3034,
-      favoritos: 1567,
-      imagem: "https://i.ibb.co/tPKqrk3b/e68ab7e13a5a7fb81c26f5b1fe0b5a09.jpg",
-    },
-    {
-      id: 4,
-      titulo: "Sequele, Cacuaco",
-      preco: "1.500.000,00",
-      dimensoes: "15×20m",
-      status: "Activo",
-      visualizacoes: 3034,
-      favoritos: 1567,
-      imagem: "https://i.ibb.co/sdCy3Jss/0deb3ad82eb27232b88115b0a08aed23.jpg",
-    },
-  ];
+  {
+    id: 1,
+    titulo: "Vila Alice, Luanda",
+    preco: "3.200.000,00",
+    dimensoes: "20×30m",
+    status: "Activo",
+    visualizacoes: 1542,
+    favoritos: 820,
+    cliques: 103,
+    imagem: "https://i.ibb.co/Y4XmbyQs/12210e817bc81b3c098f358fe631496c.jpg",
+    favoritoStatus: false,
+  },
+  {
+    id: 2,
+    titulo: "Maianga, Luanda",
+    preco: "2.750.000,00",
+    dimensoes: "18×25m",
+    status: "Inactivo",
+    visualizacoes: 980,
+    favoritos: 410,
+    cliques: 45,
+    imagem: "https://i.ibb.co/wZMq67Rb/c691e7f1da8c4e06a451d3689a840f10.jpg",
+    favoritoStatus: true,
+  },
+  {
+    id: 3,
+    titulo: "Kilamba, Belas",
+    preco: "4.800.000,00",
+    dimensoes: "25×30m",
+    status: "Activo",
+    visualizacoes: 2013,
+    favoritos: 1120,
+    cliques: 76,
+    imagem: "https://i.ibb.co/tPKqrk3b/e68ab7e13a5a7fb81c26f5b1fe0b5a09.jpg",
+    favoritoStatus: false,
+  },
+  {
+    id: 4,
+    titulo: "Patriota, Talatona",
+    preco: "5.100.000,00",
+    dimensoes: "30×35m",
+    status: "Inactivo",
+    visualizacoes: 733,
+    favoritos: 230,
+    cliques: 21,
+    imagem: "https://i.ibb.co/sdCy3Jss/0deb3ad82eb27232b88115b0a08aed23.jpg",
+    favoritoStatus: true,
+  },
+];
 
-
-
-
-
-  
-  
-
-
+export default announcement;

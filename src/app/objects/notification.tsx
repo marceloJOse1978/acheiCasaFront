@@ -169,6 +169,6 @@ export interface Notification {
       lida: false,
     },
   ]
-  
+
   export default notificacoes
   
