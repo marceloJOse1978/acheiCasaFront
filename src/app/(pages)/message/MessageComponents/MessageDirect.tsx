@@ -8,9 +8,10 @@ interface DmCardProps {
   lastMessage: string
   href: string
   time: string
+  read:boolean
 }
 
-const MessageDirect = ({ img, name, lastMessage, href, time }: DmCardProps) => {
+const MessageDirect = ({ img, name, lastMessage, href, time, read }: DmCardProps) => {
   const truncatedMessage =
     lastMessage.length > 25 ? `${lastMessage.slice(0, 20)}...` : lastMessage
 
@@ -46,8 +47,7 @@ const MessageDirect = ({ img, name, lastMessage, href, time }: DmCardProps) => {
             <p className="text-[10px] text-gray-400">{time}</p>
           )}
           <div className="text-[10px] text-blue-500 mt-1">
-            {/* Substituir por ícone real, se desejar */}
-            ✔️✔️
+            ✔️
           </div>
         </div>
       </div>

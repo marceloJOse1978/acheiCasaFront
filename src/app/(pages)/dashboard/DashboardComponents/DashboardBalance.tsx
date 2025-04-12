@@ -132,12 +132,12 @@ export default function Balance() {
               : 'Carregando...'}
           </p>
           <p className='mt-1 font-medium text-xs text-red-500'>+5% Que da última vez</p>
-          <div className="mt-5">
+          <div className="mt-3">
             <ButtonPattern text='Saldo de recarga' hrefLink="#" />
           </div>
         </div>
         
-        <div className='mt-16'>
+        <div className='mt-10'>
           <DashboardTitle title='Mensagens recentes' />
           <div>
             {chat.slice(0, 3).map((direct) => (

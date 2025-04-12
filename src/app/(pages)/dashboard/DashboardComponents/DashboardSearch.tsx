@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 const DashboardSearch = () => {
   return (
-    <div className='bg-[#FF453A] w-full h-[155px] mt-16 p-4 rounded-lg'>
+    <div className='bg-[#FF453A] w-full p-2 rounded-lg  mt-8'>
       {/* Ícone de pesquisa */}
-      <Search className='text-[#FF453A] bg-white p-2 rounded-[9px] mb-3' />  
+      <Search className='text-[#FF453A] bg-white p-1 rounded-[9px] mb-1' />  
       
       {/* Título */}
       <h1 className='font-bold text-[14px] leading-[1.2em] tracking-normal text-white'>
@@ -23,7 +23,7 @@ const DashboardSearch = () => {
       </p>
       
       {/* Link de "Saiba mais" */}
-      <Link href='#' className='flex items-center justify-start mt-3 hover:underline'>
+      <Link href='#' className='flex items-center justify-start mt-2 hover:underline'>
         <p className='font-extrabold text-[12px] leading-[100%] tracking-[0%] text-white'>
             Saiba mais
         </p>
