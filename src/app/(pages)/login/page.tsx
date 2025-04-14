@@ -6,11 +6,14 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { useRouter } from "next/navigation"; // Importa o hook useRouter
+import { login } from '../../../services/authService'; // Ajuste o caminho conforme necessário
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter(); // Inicializa o hook useRouter
   const handleGoogleLogin = () => {
     alert("Login com Google");
   };
@@ -19,7 +22,7 @@ export default function Login() {
     alert("Login com Facebook");
   };
  
-  const handleSubmit = () => {
+  const handleSubmit = async  () => {
     /*  zerar o erro a cada nova tentativa */
     setError("");
 
@@ -35,12 +38,19 @@ export default function Login() {
       setError("A senha precisa ter pelo menos 6 caracteres.");
       return;
     }
-    send();
-
-    alert("Seja bem-vindo ao Achei!");
+    //send();
+    try {
+      const { token, data } = await login({ email, password });
+      localStorage.setItem('token', token);
+      console.log("success",data);
+      console.log("token",token);
+      router.push('/'); // Redireciona para a página inicial após o login bem-sucedido
+    } catch (error) {
+      setError('Login falhou. Verifique as credenciais.');
+    }
     
   };
-  async function send() {
+  /* async function send() {
     const email = 'marcelomj1978@gmail.com';
     const password = 'password';
   
@@ -54,7 +64,7 @@ export default function Login() {
   
     const data = await res.json();
     console.log(data);
-  }  
+  }   */
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
