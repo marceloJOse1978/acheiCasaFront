@@ -1,0 +1,45 @@
+/* Garantir que o menu tenha uma transição suave */
+#sideMenu {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform, opacity;
+  }
+  
+  /* Efeito de sombra mais suave quando o menu estiver visível */
+  #sideMenu.translate-x-0 {
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animação para os itens do menu */
+  #sideMenu nav ul li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  #sideMenu.translate-x-0 nav ul li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Atraso na animação para cada item do menu para criar um efeito em cascata */
+  #sideMenu.translate-x-0 nav ul li:nth-child(1) { transition-delay: 0.05s; }
+  #sideMenu.translate-x-0 nav ul li:nth-child(2) { transition-delay: 0.1s; }
+  #sideMenu.translate-x-0 nav ul li:nth-child(3) { transition-delay: 0.15s; }
+  #sideMenu.translate-x-0 nav ul li:nth-child(4) { transition-delay: 0.2s; }
+  #sideMenu.translate-x-0 nav ul li:nth-child(5) { transition-delay: 0.25s; }
+  #sideMenu.translate-x-0 nav ul li:nth-child(6) { transition-delay: 0.3s; }
+  
+  /* Animação suave para o overlay */
+  .overlay {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Em telas grandes, garantir que o menu esteja sempre visível */
+  @media (min-width: 1024px) {
+    #sideMenu {
+      transform: translateX(0) !important;
+      opacity: 1 !important;
+    }
+  }

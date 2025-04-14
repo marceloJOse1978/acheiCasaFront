@@ -1,0 +1,25 @@
+/* Tablet pequeno */
+@media (min-width: 500px) {
+    #home {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet grande */
+@media (min-width: 750px) {
+    #home {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    #home {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width:1200px){
+    #home {
+        padding: 15px;
+    }
+}

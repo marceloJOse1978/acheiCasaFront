@@ -1,0 +1,43 @@
+/* container-element */
+/* Estilos para o Swiper */
+.filter-swiper {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .filter-swiper .swiper-pagination {
+    position: relative;
+    margin-top: 15px;
+  }
+  
+  .filter-swiper .swiper-pagination-bullet {
+    background-color: #999999;
+  }
+  
+  .filter-swiper .swiper-pagination-bullet-active {
+    background-color: #666666;
+  }
+  
+  .filter-swiper .swiper-button-next,
+  .filter-swiper .swiper-button-prev {
+    color: #999999;
+    transform: scale(0.7);
+  }
+  
+  .filter-swiper .swiper-button-next:hover,
+  .filter-swiper .swiper-button-prev:hover {
+    color: #666666;
+  }
+  
+  /* Sobrescreve a altura padrão do Swiper para garantir espaço suficiente para paginação */
+  .filter-swiper.swiper {
+    padding-bottom: 35px;
+  }
+  
+  /* Ajuste para garantir que os slides fiquem centralizados em telas muito pequenas */
+  @media (max-width: 375px) {
+    .filter-swiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+  }
