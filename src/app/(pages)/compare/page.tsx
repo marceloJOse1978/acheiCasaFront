@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import {ChevronDown, ChevronUp, ListFilter} from 'lucide-react'
+import { ChevronDown, ChevronUp, ListFilter } from 'lucide-react'
 import HouseCompare from '@/app/(components)/Cards/HouseCompare';
-import TopCompare from './compareComponents/topCompare';  
+import TopCompare from './compareComponents/topCompare';
 import casas from '../../objects/houses';
 import Loader from '@/app/(components)/Loader/loader'
+import Choose from './compareComponents/choose';
 
 const Compare = () => {
   const [loading, setLoading] = useState(true)
@@ -19,9 +20,9 @@ const Compare = () => {
 
   if (loading) return <Loader />
   return (
-    <section className="mx-auto px-4 py-8 mt-[98px] ">
+   /*  <section className="mx-auto px-4 py-8 mt-[98px] ">
       <TopCompare />
-    
+
       <div className='mt-[30px] mb-[30px]'>
         <ul className='flex text-[#999999] gap-[25px]'>
           <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Cômodos</a></li>
@@ -52,14 +53,16 @@ const Compare = () => {
         </div>
         <div className='w-full flex items-start justify-between'>
           {casas.map((casa) => (
-              <HouseCompare key={casa.id} object={casa} />
-            ))} 
+            <HouseCompare key={casa.id} object={casa} />
+          ))}
           <div className="right-[45px] mt-[150px] w-[30px] h-[30px] absolute z-[100] bg-[#FF453A] flex items-center justify-center rounded-full cursor-pointer rotate-90">
             <ChevronUp />
           </div>
         </div>
       </div>
-    </section>
+       
+    </section> */
+     <Choose />
   )
 }
 
