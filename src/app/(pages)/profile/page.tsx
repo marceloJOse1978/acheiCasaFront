@@ -31,7 +31,7 @@ export default function Profile(){
     const handleCancelClick = () => {
         setIsEditing(false);
         console.log("cancelar")
-      };
+    };
 
     if (loading) return <Loader />
     return (
