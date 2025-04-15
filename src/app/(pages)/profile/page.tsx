@@ -80,18 +80,18 @@ export default function Profile(){
                         {/* <ProfileSave /> */}
                     </div>
                 </ProfileContainer>
-                {/* <ProfileContainer marginTop={0}>
+                <ProfileContainer marginTop={0}>
                     <div className=''>
                         <Title text='Endereço' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].country} />
-                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].province} />
-                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].city} />
-                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} />
+                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].country} isEditable={isEditing} />
+                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].province} isEditable={isEditing} />
+                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].city} isEditable={isEditing} />
+                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} isEditable={isEditing} />
                         </div>
                     </div>
-                    <EditButon onClick={handleEditClick} />
-                </ProfileContainer> */}
+                    {/* <EditButon onClick={handleEditClick} /> */}
+                </ProfileContainer>
             </div>
         </section>
     )
