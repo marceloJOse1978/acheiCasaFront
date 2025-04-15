@@ -4,16 +4,26 @@ import casas from '../../../objects/houses';
 import ButtonPattern from '@/app/(components)/Buttons/ButtonPattern';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Choose = () => {
+interface ChooseProps {
+  onClose: () => void;
+};
+
+const Choose = ({ onClose }: ChooseProps) => {
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-1000">
       <div className="bg-white w-[90%] max-w-6xl h-[75vh] rounded-2xl shadow-lg overflow-y-auto">
       <div className='flex items-center justify-between shadow mb-8 p-6'>
         <h2 className="text-2xl font-bold text-[#000]">Escolha o Imóvel</h2> 
         <ButtonPattern text="Save" hrefLink="#" />
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg shadow hover:bg-red-600 transition-all duration-200 cursor-pointer">
+          ✕ Fechar
+        </button>
+
       </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
           {casas.length === 0 ? (
             <p className="text-gray-500 col-span-4 text-center">Nenhum imóvel disponível</p>
           ) : (

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { ChevronDown, ChevronUp, ListFilter } from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
+import { ChevronUp } from 'lucide-react'
 import HouseCompare from '@/app/(components)/Cards/HouseCompare';
 import TopCompare from './compareComponents/topCompare';
 import casas from '../../objects/houses';
@@ -10,6 +10,10 @@ import Choose from './compareComponents/choose';
 
 const Compare = () => {
   const [loading, setLoading] = useState(true)
+  const [showChoose, setShowChoose] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null);
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
@@ -19,11 +23,14 @@ const Compare = () => {
   }, [])
 
   if (loading) return <Loader />
+
+  if (showChoose) return <Choose onClose={() => setShowChoose(false)} />
+
   return (
-   /*  <section className="mx-auto px-4 py-8 mt-[98px] ">
+    <section className="mx-auto px-4 py-8 mt-[98px]">
       <TopCompare />
 
-      <div className='mt-[30px] mb-[30px]'>
+      <div className='mt-[20px] mb-[20px]'>
         <ul className='flex text-[#999999] gap-[25px]'>
           <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Cômodos</a></li>
           <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Localização</a></li>
@@ -38,11 +45,16 @@ const Compare = () => {
           <li><a href='#' className='shadow-custom p-3 border border-gray-200 rounded-lg text-[12px]'>Andar</a></li>
         </ul>
       </div>
-      <div className='flex items-start justify-start gap-[30px]'>
+
+      <div className='flex items-start justify-start gap-[30px]' ref={containerRef}>
         <div className='min-w-[200px]'>
-          <div className='w-[58px] h-[58px] bg-[#FF453A] flex items-center justify-center cursor-pointer rounded-lg mt-[130px] m-[37%]'>
+          <div
+            className='w-[58px] h-[58px] bg-[#FF453A] flex items-center justify-center cursor-pointer rounded-lg mt-[130px] m-[37%]'
+            onClick={() => setShowChoose(true)}
+          >
             <span className='text-white text-[50px]'>+</span>
           </div>
+
           <ul className='font-bold text-[13px] leading-none tracking-normal text-right text-[#999999] mt-[240px]'>
             <li>Área Útil:</li>
             <li className='mt-10'>N° de Quartos:</li>
@@ -51,18 +63,18 @@ const Compare = () => {
             <li className='mt-12'>N° de Refeições:</li>
           </ul>
         </div>
+
         <div className='w-full flex items-start justify-between'>
           {casas.map((casa) => (
             <HouseCompare key={casa.id} object={casa} />
           ))}
+
           <div className="right-[45px] mt-[150px] w-[30px] h-[30px] absolute z-[100] bg-[#FF453A] flex items-center justify-center rounded-full cursor-pointer rotate-90">
             <ChevronUp />
           </div>
         </div>
       </div>
-       
-    </section> */
-     <Choose />
+    </section>
   )
 }
 

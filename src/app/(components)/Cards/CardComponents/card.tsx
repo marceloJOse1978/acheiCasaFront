@@ -7,7 +7,7 @@ import { Star } from 'lucide-react';
 const Card = ({ object }: {object:any}) => {
   return (
     <div key={object.id} className="">
-        <figure className='w-full h-[300px] rounded-[20px] relative overflow-hidden group' title={object.title}>
+        <figure className='w-full h-[250px] rounded-[20px] relative overflow-hidden group' title={object.title}>
             <a href="#">
                 <img src={object.image} alt={object.title} className="absolute w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105" />
             </a>
