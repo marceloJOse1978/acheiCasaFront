@@ -9,7 +9,7 @@ import EditButon from './(ProfileComponents)/ProfileEditButton';
 import ProfileContainer from './(ProfileComponents)/ProfileContainer'
 import Loader from '@/app/(components)/Loader/loader'
 import ProfileSave from './(ProfileComponents)/ProfileSave'
-import { Pencil } from 'lucide-react';
+import { Ban, Pencil, Save } from 'lucide-react';
 
 export default function Profile(){
     const [loading, setLoading] = useState(true)
@@ -27,6 +27,11 @@ export default function Profile(){
         setIsEditing(prev => !prev);
         console.log("Editar");
     };
+
+    const handleCancelClick = () => {
+        setIsEditing(false);
+        console.log("cancelar")
+      };
 
     if (loading) return <Loader />
     return (
@@ -59,9 +64,20 @@ export default function Profile(){
                             <ShowInformation keyText='Biografia' keyValue={users[0].bio} isEditable={isEditing} />
                         </div>
                     </div>
-                    <div className='bg-red-100'>
-                        <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
-                        <ProfileSave />
+                    <div className=''>
+                        <EditButon 
+                            text={isEditing ? 'Salvar' : 'Editar'}
+                            icon={isEditing ? Save : Pencil} 
+                            onClick={handleEditClick} 
+                        />
+                        <EditButon
+                            text='Cancelar' 
+                            icon={Ban} 
+                            bgColor="#999" 
+                            visible={isEditing} // Só mostra quando está em modo edição
+                            onClick={handleCancelClick}
+                        />
+                        {/* <ProfileSave /> */}
                     </div>
                 </ProfileContainer>
                 {/* <ProfileContainer marginTop={0}>
