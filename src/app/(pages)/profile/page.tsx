@@ -64,7 +64,7 @@ export default function Profile(){
                         <ProfileSave />
                     </div>
                 </ProfileContainer>
-                {/* <ProfileContainer marginTop={0}>
+                <ProfileContainer marginTop={0}>
                     <div className=''>
                         <Title text='Endereço' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
@@ -74,8 +74,8 @@ export default function Profile(){
                             <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} />
                         </div>
                     </div>
-                    <EditButon onClick={handleEditClick} />
-                </ProfileContainer> */}
+                    <EditButon text="Editar" icon={Pencil} onClick={handleEditClick} />
+                </ProfileContainer>
             </div>
         </section>
     )

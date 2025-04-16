@@ -6,6 +6,6 @@ export default function ProfileContainer ({children, marginTop}: Readonly<{child
             px-10 border border-[rbg(283,283,283)]
             mt-5 relative'>
             { children }
-        </div> 
+        </div>
     )
 }

@@ -21,7 +21,7 @@ export default function ShowInformation({
       <input
         type="text"
         className={`w-full h-[40px] rounded-[5px] px-4 py-2 text-sm leading-none tracking-normal mt-[3px] 
-          ${isEditable ? 'bg-white text-[#000000] border border-[#FF453A] outline-none' : 'bg-[#F5F5F5] text-[#999999] border border-transparent'}
+          ${isEditable ? 'bg-white text- border border-[#FF453A] outline-none' : 'bg-[#F5F5F5] text-[#999999] border border-transparent'}
         `}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
