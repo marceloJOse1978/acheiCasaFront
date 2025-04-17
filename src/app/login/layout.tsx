@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 // app/layout.jsx ou app/layout.tsx
 export const metadata = {
     title: "Minha aplicação",
@@ -7,7 +9,11 @@ export const metadata = {
   export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
       <html lang="pt">
-        <body>{children}</body>
+        <body>
+          <div className="">
+            {children}
+          </div>
+        </body>
       </html>
     );
   }

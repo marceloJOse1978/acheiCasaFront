@@ -8,6 +8,10 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { useRouter } from "next/navigation"; // Importa o hook useRouter
 import { login } from '../../services/authService'; // Ajuste o caminho conforme necessário
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+/* import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; */
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -30,12 +34,14 @@ export default function Login() {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!email.match(emailPattern)) {
       setError("Por favor, insira um email válido.");
+      setError("Por favor, insira um email válido.");
       return;
     }
 
     /* Validação por senha */
     if (password.length < 6) {
       setError("A senha precisa ter pelo menos 6 caracteres.");
+      toast.error("A senha precisa ter pelo menos 6 caracteres.");
       return;
     }
     //send();
@@ -46,6 +52,7 @@ export default function Login() {
       console.log("token",token);
       router.push('/'); // Redireciona para a página inicial após o login bem-sucedido
     } catch (error) {
+      toast.error("Login falhou. Verifique as credenciais.");
       setError('Login falhou. Verifique as credenciais.');
     }
     
@@ -68,7 +75,8 @@ export default function Login() {
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-2xl shadow-lg p-6 w-96">
+      <ToastContainer />
+      <div className="bg-red rounded-2xl shadow-lg p-6 w-96">
         <div className="flex justify-end">
           <button onClick={() => alert("Deseja fechar ?")} className="text-red-500 cursor-pointer hover:bg-red-200 rounded-full"><IoMdCloseCircleOutline size={25} /></button>
         </div>
