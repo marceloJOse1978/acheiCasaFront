@@ -7,7 +7,7 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { useRouter } from "next/navigation"; // Importa o hook useRouter
-import { login } from '../../../services/authService'; // Ajuste o caminho conforme necessário
+import { login } from '../../services/authService'; // Ajuste o caminho conforme necessário
 
 export default function Login() {
   const [email, setEmail] = useState("");
