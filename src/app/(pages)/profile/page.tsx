@@ -1,6 +1,6 @@
 "use client";
 
-import users from '../../objects/obje'; 
+import users from '../../objects/obje';
 import React, { useState, useEffect } from 'react';
 import ShowInformation from './(ProfileComponents)/ProfileInformation';
 import Title from './(ProfileComponents)/Title';
@@ -11,13 +11,13 @@ import Loader from '@/app/(components)/Loader/loader'
 import ProfileSave from './(ProfileComponents)/ProfileSave'
 import { Pencil } from 'lucide-react';
 
-export default function Profile(){
+export default function Profile() {
     const [loading, setLoading] = useState(true)
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setLoading(false)
+            setLoading(false)
         }, 1500)
 
         return () => clearTimeout(timer)
@@ -28,6 +28,11 @@ export default function Profile(){
         console.log("Editar");
     };
 
+    const saveChanges = () => {
+        // Add save logic here
+        console.log("Saving changes...");
+    };
+
     if (loading) return <Loader />
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
@@ -35,18 +40,22 @@ export default function Profile(){
             <div>
                 <ProfileContainer marginTop={0}>
                     {users.map((user) => (
-                    <div key={user.id} className="flex items-center justify-start gap-4">
-                        <figure className='w-[130px] h-[130px] rounded-full p-[5px] bg-[#FF453A] shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden select-none'>
-                            <img src={user.image} alt={user.name} className="w-full h-full object-cover rounded-full select-none" />
-                        </figure>
-                        <div>
-                            <p className="font-bold text-2xl leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
-                            <p className='my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none'>{user.role}</p>
-                            <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
+                        <div key={user.id} className="flex items-center justify-start gap-4">
+                            <figure className='w-[130px] h-[130px] rounded-full p-[5px] bg-[#FF453A] shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden select-none'>
+                                <img src={user.image} alt={user.name} className="w-full h-full object-cover rounded-full select-none" />
+                            </figure>
+                            <div>
+                                <p className="font-bold text-2xl leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
+                                <p className='my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none'>{user.role}</p>
+                                <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
+                            </div>
+
+                            <div className="ml-270 h-[130px]">
+                                <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
+                            </div>
                         </div>
-                    </div>
                     ))}
-                   {/*  <EditButon onClick={handleEditClick} /> */}
+                    {/*  <EditButon onClick={handleEditClick} /> */}
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
                     <div className=''>
@@ -59,9 +68,9 @@ export default function Profile(){
                             <ShowInformation keyText='Biografia' keyValue={users[0].bio} isEditable={isEditing} />
                         </div>
                     </div>
-                    <div className='bg-red-100'>
+                    <div>
                         <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
-                        <ProfileSave />
+                        {/* <ProfileSave /> */}
                     </div>
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
@@ -77,6 +86,18 @@ export default function Profile(){
                     <EditButon text="Editar" icon={Pencil} onClick={handleEditClick} />
                 </ProfileContainer>
             </div>
+            
+            {/* <div className="flex justify-between mt-4">
+
+                    <button className="bg-gray-300 px-4 py-2 rounded text-black hover:bg-gray-600" onClick={() => window.history.back()}>
+                        Voltar
+                    </button>
+               
+                    <button className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" onClick={saveChanges}>
+                        <Pencil className=' text-[#ff453a]' />
+                        Salvar
+                    </button>
+            </div> */}
         </section>
     )
 }
