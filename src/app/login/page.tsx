@@ -57,7 +57,8 @@ export default function Login() {
     }
     
   };
-  /* async function send() {
+  
+  async function send() {
     const email = 'marcelomj1978@gmail.com';
     const password = 'password';
   
@@ -71,7 +72,7 @@ export default function Login() {
   
     const data = await res.json();
     console.log(data);
-  }   */
+  }  
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
