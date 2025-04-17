@@ -137,7 +137,6 @@ export default function Login() {
           <FaFacebook size={20} className="text-gray-400 mr-12" />
           <span className="text-gray-700 mr-12">Continuar com o Facebook</span>
         </button>
-
       </div>
     </div >
   );

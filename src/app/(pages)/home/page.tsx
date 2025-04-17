@@ -20,6 +20,13 @@ const Home = () => {
     }, [])
 
     if (loading) return <Loader />
+   /*  const tokenExemplo = getItem('token', token);
+    console.log(tokenExemplo);
+    if (tokenExemplo){
+        console.log("Tem Token")
+    } else {
+        console.log("Nao tem Tokem");
+    } */
     return (
     <section className="mx-auto px-4 py-8 mt-[98px]">
         <Filter visible={false} />

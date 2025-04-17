@@ -6,7 +6,7 @@ import SearchBar from "./HeaderComponents/SearchBar";
 import UserMenu from "./HeaderComponents/UserMenu";
 
 interface HeaderProps {
-  disabledMenu:boolean;
+  disabledMenu?:boolean;
 }
 
 export default function Header({disabledMenu}:HeaderProps) {
