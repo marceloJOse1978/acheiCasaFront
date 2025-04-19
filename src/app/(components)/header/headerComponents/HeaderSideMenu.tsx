@@ -1,5 +1,5 @@
-import ProfileSection from './ProfileSection';
-import NavSection from './NavSection';
+import ProfileSection from './HeaderProfileSection';
+import NavSection from './HeaderNavSection';
 
 interface SideMenuProps {
   visible: boolean;

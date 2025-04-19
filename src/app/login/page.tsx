@@ -10,8 +10,8 @@ import { useRouter } from "next/navigation"; // Importa o hook useRouter
 import { login } from '../../services/authService'; // Ajuste o caminho conforme necessário
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-/* import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; */
+/* import LoginButton from './loginComponents/LoginButton' */
+import LoginForm from './LoginForm'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -50,7 +50,7 @@ export default function Login() {
       localStorage.setItem('token', token);
       console.log("success",data);
       console.log("token",token);
-      router.push('/'); // Redireciona para a página inicial após o login bem-sucedido
+      router.push('/home'); // Redireciona para a página inicial após o login bem-sucedido
     } catch (error) {
       toast.error("Login falhou. Verifique as credenciais.");
       setError('Login falhou. Verifique as credenciais.');
@@ -76,7 +76,7 @@ export default function Login() {
   }  
   
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+   /*  <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <ToastContainer />
       <div className="bg-red rounded-2xl shadow-lg p-6 w-96">
         <div className="flex justify-end">
@@ -126,21 +126,10 @@ export default function Login() {
           <div className="flex-1 border-t border-gray-300"></div>
         </div>
 
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full flex items-center cursor-pointer justify-center border py-2 rounded-lg mb-2 bg-white hover:bg-gray-100 transition">
-          <FaGoogle size={20} className="text-gray-400 mr-12" />
-          <span className="text-gray-700 mr-16">Continuar com o Google</span>
-        </button>
-
-        <button
-          onClick={handleFacebookLogin}
-          className="w-full flex items-center cursor-pointer justify-center border py-2 rounded-lg bg-white hover:bg-gray-100 transition">
-          <FaFacebook size={20} className="text-gray-400 mr-12" />
-          <span className="text-gray-700 mr-12">Continuar com o Facebook</span>
-        </button>
-
+        <LoginButton text="Continuar com o Google" icon={FaGoogle} onClick={handleGoogleLogin} />
+        <LoginButton text="Continuar com o Facebook" icon={FaFacebook} onClick={handleFacebookLogin} />
       </div>
-    </div >
+    </div > */
+    <LoginForm />
   );
 }
