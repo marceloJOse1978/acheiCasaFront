@@ -32,14 +32,14 @@ export default function Filter({ visible }: { visible: boolean }) {
   }, []);
 
   const filterItems = [
-    { icon: '/icons-filter/destaque.png', label: 'Destaques' },
-    { icon: '/icons-filter/umbrella-beach.png', label: 'Praia' },
-    { icon: '/icons-filter/ticket-airline.png', label: 'Reserva' },
-    { icon: '/icons-filter/quarto.png', label: 'Quartos' },
-    { icon: '/icons-filter/casa.png', label: 'Residências' },
-    { icon: '/icons-filter/campo.png', label: 'Terrenos' },
-    { icon: '/icons-filter/loja.png', label: 'Lojas' },
-    { icon: '/icons-filter/escritorio.png', label: 'Escritórios' },
+    { icon: '/icons-filter/destaque.svg', label: 'Destaques' },
+    { icon: '/icons-filter/praia.svg', label: 'Praia' },
+    { icon: '/icons-filter/ticket-airline.svg', label: 'Reserva' },
+    { icon: '/icons-filter/quarto.svg', label: 'Quartos' },
+    { icon: '/icons-filter/casa.svg', label: 'Residências' },
+    { icon: '/icons-filter/campo.svg', label: 'Terrenos' },
+    { icon: '/icons-filter/loja.svg', label: 'Lojas' },
+    { icon: '/icons-filter/escritorio.svg', label: 'Escritórios' },
   ];
 
   // Renderiza um item de filtro
