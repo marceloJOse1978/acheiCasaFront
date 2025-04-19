@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { KeyRound, UserRound } from "lucide-react";
-import ToggleButton from "./ToggleButton";
-import SideMenu from "./SideMenu";
-import Overlay from "./Overlay";
+import ToggleButton from "./HeaderToggleButton";
+import SideMenu from "./HeaderSideMenu";
+import Overlay from "./HeaderOverlay";
 import "./style.css";
 
 interface HeaderProps {

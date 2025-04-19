@@ -1,9 +1,9 @@
 "use client";
 
-import Logo from "./HeaderComponents/Logo";
-import NavTabs from "./HeaderComponents/NavTabs";
-import SearchBar from "./HeaderComponents/SearchBar";
-import UserMenu from "./HeaderComponents/UserMenu";
+import Logo from "./HeaderComponents/HeaderLogo";
+import NavTabs from "./HeaderComponents/HeaderNavTabs";
+import SearchBar from "./HeaderComponents/HeaderSearchBar";
+import UserMenu from "./HeaderComponents/HeaderUserMenu";
 
 interface HeaderProps {
   disabledMenu?:boolean;
