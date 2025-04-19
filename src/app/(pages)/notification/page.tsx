@@ -44,7 +44,7 @@ const NotificationPage = () => {
   if (loading) return <Loader />
 
   return (
-    <section className="mt-24 px-4 py-8 max-w-screen-2xl mx-auto">
+    <section className="mt-24 py-8 max-w-screen-2xl ml-4">
       <div className="flex flex-col md:flex-row gap-6 ">
         {/* Painel de notificações */}
         <div className="w-full  md:w-80 lg:w-96 bg-white shadow-lg rounded-2xl p-5 flex flex-col border border-gray-100 h-fit md:sticky md:top-32 ">

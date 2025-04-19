@@ -28,8 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <div className="lg:w-[100%] lg:pl-[0px] lg:pr-[30px] lg:pb-[30px]">
+        <Header disabledMenu={false} />
+        <div className="lg:w-[100%] lg:pl-[250px] lg:pr-[30px] lg:pb-[30px]">
           {children}
         </div>
       </body>
