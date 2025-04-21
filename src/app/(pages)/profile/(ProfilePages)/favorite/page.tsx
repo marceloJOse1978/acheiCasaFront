@@ -4,11 +4,11 @@ import MenuProfile from '../../(ProfileComponents)/ProfileMenu';
 import ProfileContainer from '../../(ProfileComponents)/ProfileContainer';
 import Loader from '@/app/(components)/Loader/loader'
 
-export default function Favorite () {
+export default function Favorite() {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const timer = setTimeout(() => {
-        setLoading(false)
+            setLoading(false)
         }, 1500)
 
         return () => clearTimeout(timer)
@@ -21,6 +21,9 @@ export default function Favorite () {
             <ProfileContainer marginTop={0}>
                 <p className='text-[#000]'>Favorito</p>
             </ProfileContainer>
-        </div>
-    )
+            <div className="flex justify-end gap-4 mt-6">
+                <button className="bg-gray-200 text-black px-6 py-2 rounded-lg shadow">Voltar</button>
+                <button className="bg-red-500 text-white px-6 py-2 rounded-lg shadow">Salvar</button>
+            </div>
+        </div>)
 }

@@ -45,12 +45,12 @@ export default function Profile() {
                                 <img src={user.image} alt={user.name} className="w-full h-full object-cover rounded-full select-none" />
                             </figure>
                             <div>
-                                <p className="font-bold text-2xl leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
+                                <p className="font-bold text-2x1 leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
                                 <p className='my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none'>{user.role}</p>
                                 <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
                             </div>
 
-                            <div className="ml-270 h-[130px]">
+                            <div className="ml-245 h-[130px]">
                                 <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
                             </div>
                         </div>
@@ -87,17 +87,11 @@ export default function Profile() {
                 </ProfileContainer>
             </div>
             
-            {/* <div className="flex justify-between mt-4">
-
-                    <button className="bg-gray-300 px-4 py-2 rounded text-black hover:bg-gray-600" onClick={() => window.history.back()}>
-                        Voltar
-                    </button>
-               
-                    <button className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" onClick={saveChanges}>
-                        <Pencil className=' text-[#ff453a]' />
-                        Salvar
-                    </button>
-            </div> */}
+            <div className="flex justify-end gap-4 mt-6">
+                               <button className="bg-gray-200 text-black px-6 py-2 rounded-lg shadow">Voltar</button>
+                               <button className="bg-red-500 text-white px-6 py-2 rounded-lg shadow">Salvar</button>
+                           </div>
         </section>
     )
 }
+/* w-full h-[130px] bg-white rounded-[30px] shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 select-none */
