@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-/* import { useEffect } from "react"; */
 import { HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,8 +12,16 @@ import { login } from "../../services/authService";
 import LoginButton from "./(loginComponents)/LoginButton"
 import LoginInput from "./(loginComponents)/LoginInput";
 import CloseButton from "./(loginComponents)/CloseButton";
+import LoginBar from './(loginComponents)/LoginBar'
+import ButtonComponent from '@/app/(components)/Buttons/ButtonComponent'
 
-export default function LoginForm() {
+interface LoginFormProps {
+  localState?: boolean;
+  onClose?: () => void;
+}
+
+
+export default function LoginForm( {localState, onClose}:LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -40,7 +47,6 @@ export default function LoginForm() {
 
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!email.match(emailPattern)) {
-      /* setError("Por favor, insira um email válido."); */
       toast.error("Por favor, insira um email válido.");
       return;
     }
@@ -61,9 +67,15 @@ export default function LoginForm() {
   };
 
   const closeForm = () => {
-    router.push("/");
-  }
-
+    if (localState) {
+      router.push("/");
+    } else {
+      onClose?.(); 
+      console.log('pra fechar')
+    }
+  };
+  
+  
   return (
     <div className="bg-white rounded-2xl">
       <ToastContainer />
@@ -92,24 +104,12 @@ export default function LoginForm() {
         />
 
         <p className="text-right text-sm text-gray-500 mt-2 cursor-pointer">Esqueci a minha palavra-passe</p>
-
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-red-500 text-white py-2 rounded-lg mt-4 font-semibold cursor-pointer hover:bg-red-600"
-        >
-          Entrar
-        </button>
+        <ButtonComponent text="Entrar" onClick={handleSubmit}/>
 
         <p className="text-left text-sm text-gray-500 mt-2">
           Novo usuário? <span className="text-red-500 font-bold cursor-pointer">Cadastre-se</span>
         </p>
-
-        <div className="flex items-center my-4">
-          <div className="flex-1 border-t border-gray-300"></div>
-          <span className="mx-4 text-gray-500">ou</span>
-          <div className="flex-1 border-t border-gray-300"></div>
-        </div>
-
+        <LoginBar />
         <LoginButton text="Continuar com o Google" icon={FaGoogle} onClick={handleGoogleLogin} />
         <LoginButton text="Continuar com o Facebook" icon={FaFacebook} onClick={handleFacebookLogin} />
       </div>

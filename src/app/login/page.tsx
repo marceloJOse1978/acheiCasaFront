@@ -1,51 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { HiOutlineLockClosed } from "react-icons/hi";
+/* import { HiOutlineLockClosed } from "react-icons/hi";
 import { HiOutlineMail } from "react-icons/hi";
-import { IoMdCloseCircleOutline } from "react-icons/io";
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { useRouter } from "next/navigation"; // Importa o hook useRouter
-import { login } from '../../services/authService'; // Ajuste o caminho conforme necessário
+import { IoMdCloseCircleOutline } from "react-icons/io"; */
+/* import { FaGoogle } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa"; */
+import { useRouter } from "next/navigation"; 
+import { login } from '../../services/authService'; 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 /* import LoginButton from './loginComponents/LoginButton' */
 import LoginForm from './LoginForm'
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+ /*  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter(); // Inicializa o hook useRouter
+  const router = useRouter();
   const handleGoogleLogin = () => {
     alert("Login com Google");
-  };
+  }; */
 
-  const handleFacebookLogin = () => {
+/*   const handleFacebookLogin = () => {
     alert("Login com Facebook");
   };
- 
-  const handleSubmit = async  () => {
+  */
+/*   const handleSubmit = async  () => { */
     /*  zerar o erro a cada nova tentativa */
-    setError("");
-
+  /*   setError("");
+ */
     /*  Validação por email */
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+/*     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!email.match(emailPattern)) {
-      setError("Por favor, insira um email válido.");
-      setError("Por favor, insira um email válido.");
+
+      toast.error("Por favor, insira um email válido.");
       return;
-    }
+    } */
 
     /* Validação por senha */
-    if (password.length < 6) {
-      setError("A senha precisa ter pelo menos 6 caracteres.");
+/*     if (password.length < 6) {
       toast.error("A senha precisa ter pelo menos 6 caracteres.");
       return;
-    }
+    } */
     //send();
-    try {
+/*     try {
       const { token, data } = await login({ email, password });
       localStorage.setItem('token', token);
       console.log("success",data);
@@ -56,9 +55,9 @@ export default function Login() {
       setError('Login falhou. Verifique as credenciais.');
     }
     
-  };
+  }; */
   
-  async function send() {
+/*   async function send() {
     const email = 'marcelomj1978@gmail.com';
     const password = 'password';
   
@@ -73,11 +72,11 @@ export default function Login() {
     
     const data = await res.json();
     console.log(data);
-  }  
+  }   */
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <LoginForm />
+      <LoginForm localState={true} />
     </div>
   );
 }
