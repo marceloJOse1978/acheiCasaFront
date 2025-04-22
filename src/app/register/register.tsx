@@ -10,7 +10,7 @@ import RegisterInput from "./(RegisterComponents)/registerInput";
 import RegisterPutID from './(RegisterComponents)/registerPutID'
 import RegisterConfirmData from './(RegisterComponents)/registerConfirmData'
 import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
-import RegisterComp from './register'
+import RegisterHeader from './RegisterHeader'
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -145,12 +145,13 @@ export default function Register() {
     <div className="flex items-center justify-center min-h-screen bg-gray-500">
        <ToastContainer />
       <div className="bg-white rounded-2xl shadow-lg p-6 w-131">
-        <div className="flex justify-between items-center">
+
+        {/* <div className="flex justify-between items-center">
           <h2 className="text-red-500 font-bold text-center text-lg mx-auto">Cadastrar-se</h2>
           <button onClick={() => alert("Deseja fechar ?")} className="text-red-500 cursor-pointer hover:bg-red-200 rounded-full">
             <IoMdCloseCircleOutline size={25} />
           </button>
-        </div>
+        </div> */}
 
         <div className="flex items-center mt-4">
           {[1, 2, 3, 4].map((num) => (
