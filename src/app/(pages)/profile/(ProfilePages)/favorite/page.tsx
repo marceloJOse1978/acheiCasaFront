@@ -60,11 +60,10 @@ export default function Favorite() {
   return (
     <div className="mx-auto px-4 py-8 mt-[98px]">
       <MenuProfile profile={false} anuncio={false} history={false} favorite={true} title='Gerir Favoritos' />
-      <ProfileContainer marginTop={0}>
-        <p className="text-xl font-semibold text-black mb-4">Lista de imóveis</p>
-        <div className="space-y-6">
+        <div className="space-y-6 h-140 p-4 rounded-[30px] shadow-[0_0_10px_rgba(0,0,0,0.1)] mt-10 overflow-y-auto bg-white">
+        <p className="text-xl font-semibold rounded-[30px] text-black mb-4">Lista de imóveis</p>
           {houses.map((house) => (
-            <div key={house.id} className="flex justify-between items-center p-4 rounded-2x1 shadow-md bg-white">
+            <div key={house.id} className="flex items-center p-4 rounded-[30px] w-400 shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-white">
               <div className="flex gap-4">
                 <Image src={house.img} alt="house" width={90} height={90} className="rounded-lg object-cover" />
                 <div className="space-y-1">
@@ -74,20 +73,15 @@ export default function Favorite() {
                 </div>
               </div>
 
-              {<div className="flex-1 px-6 grid grid-cols-5 gap-4 text-center text-sm text-gray-600">
-                <p>👥 {house.people} Adultos</p>
-                <p>🛏 {house.rooms} Quartos<br />{house.beds} Camas</p>
-                <p>🚽 {house.bath} Banheiro</p>
-                <p>🍽 {house.meals} Refeições por dia</p>
-              </div>}
-
-             {/*  <button className="flex items-center gap-2 px-5 py-2 bg-red-100 text-red-500 rounded-full border border-red-300 hover:bg-red-200 transition">
-                Editar <Pencil size={16} />
-              </button> */}
+              <div className="flex-1 px-6 grid grid-cols-5 gap-4 text-center text-sm text-gray-600">
+                <p> {house.people} Adultos</p>
+                <p> {house.rooms} Quartos<br />{house.beds} Camas</p>
+                <p> {house.bath} Banheiro</p>
+                <p> {house.meals} Refeições por dia</p>
+              </div>
             </div>
           ))}
         </div>
-      </ProfileContainer>
     </div>
   )
 }
