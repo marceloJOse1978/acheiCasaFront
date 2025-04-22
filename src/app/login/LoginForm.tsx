@@ -5,6 +5,7 @@ import { HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 import { login } from "../../services/authService";
@@ -106,9 +107,10 @@ export default function LoginForm( {localState, onClose}:LoginFormProps) {
         <p className="text-right text-sm text-gray-500 mt-2 cursor-pointer">Esqueci a minha palavra-passe</p>
         <ButtonComponent text="Entrar" onClick={handleSubmit}/>
 
-        <p className="text-left text-sm text-gray-500 mt-2">
+        <Link href="/register" className="text-left text-sm text-gray-500 mt-2">
           Novo usuário? <span className="text-red-500 font-bold cursor-pointer">Cadastre-se</span>
-        </p>
+        </Link>
+        
         <LoginBar />
         <LoginButton text="Continuar com o Google" icon={FaGoogle} onClick={handleGoogleLogin} />
         <LoginButton text="Continuar com o Facebook" icon={FaFacebook} onClick={handleFacebookLogin} />

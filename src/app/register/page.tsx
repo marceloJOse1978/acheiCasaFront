@@ -3,8 +3,18 @@
 import { useState } from "react";
 import { FaUser, FaCalendarAlt, FaLock, FaEnvelope, FaGoogle, FaFacebook, FaPhoneAlt, FaUpload } from "react-icons/fa";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import RegisterSignup from './(RegisterComponents)/registerSignup'
+import RegisterInput from "./(RegisterComponents)/registerInput";
 
 export default function Cadastro() {
+  const [value, setValue] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     primeiroNome: "",
@@ -49,68 +59,74 @@ export default function Cadastro() {
 
   const validateStep = (currentStep: number) => {
     let valid = true;
-    let newErrors: { [key: string]: string } = {};
-
+   
     function isValidPhoneNumber(telefone: string): boolean {
-      const phoneRegex = /^\+\d{1,3}\s?\(?\d{2,3}\)?\s?\d{4,5}-?\d{4}$/;
+      const phoneRegex = /^\d{9}$/;
       return phoneRegex.test(telefone);
     }
 
     if (currentStep === 1) {
       /*Validação primeiro passo */
       if (!formData.primeiroNome || formData.primeiroNome.length < 2) {
-        newErrors.primeiroNome = "Primeiro nome é obrigatório!";
+        toast.error("Primeiro nome é obrigatório!")
         valid = false;
       }
+
       if (!formData.sobrenome || formData.sobrenome.length < 2) {
-        newErrors.sobrenome = "Sobrenome é obrigatório!";
+        toast.error("Sobrenome é obrigatório!");
         valid = false;
       }
+
       if (!formData.dataNascimento || new Date(formData.dataNascimento) > new Date()) {
-        newErrors.dataNascimento = "Data de nascimento deve ser válida e não pode ser no futuro";
+        toast.error("Data de nascimento deve ser válida e não pode ser no futuro.");
         valid = false;
       }
+
       if (!formData.genero) {
-        newErrors.genero = "Selecione um gênero por favor!";
+        toast.error("Selecione um gênero por favor!")
         valid = false;
       }
     } else if (currentStep === 2) {
+
       /*Validação segundo passo */
       if (!formData.telefone || !isValidPhoneNumber(formData.telefone)) {
-        newErrors.telefone = "Telefone inválido. Por favor, insira um número válido.";
+        toast.error('Telefone inválido. Por favor, insira um número válido.')
         valid = false;
       }
+
       if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "E-mail inválido";
+        toast.error('E-mail inválido')
         valid = false;
       }
+
       if (!formData.senha || formData.senha.length < 6) {
-        newErrors.senha = "Senha deve ter pelo menos 6 caracteres";
+        toast.error('Senha deve ter pelo menos 6 caracteres')
         valid = false;
       }
+
       if (formData.senha !== formData.confirmarSenha) {
-        newErrors.confirmarSenha = "As senhas não correspondem";
+        toast.error("As senhas não correspondem")
         valid = false;
       }
     } else if (currentStep === 3) {
       /*Validação terceiro passo */
       if (!formData.documentoFrente) {
-        newErrors.documentoFrente = "É necessário enviar a frente do bilhete de identidade";
+        toast.error('É necessário enviar a frente do bilhete de identidade')
         valid = false;
       }
+
       if (!formData.documentoVerso) {
-        newErrors.documentoVerso = "É necessário enviar o verso do bilhete de identidade";
+        toast.error('É necessário enviar o verso do bilhete de identidade')
         valid = false;
       }
     } else if (currentStep === 4) {
       /*Validação quarto passo */
       if (!formData.confirmarCodigo || formData.confirmarCodigo.length < 6) {
-        newErrors.confirmarCodigo = "Código de confirmação inválido";
+        toast.error('Código de confirmação inválido')
         valid = false;
       }
     }
 
-    setErrors(newErrors);
     return valid;
   };
 
@@ -123,6 +139,7 @@ export default function Cadastro() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-500">
+       <ToastContainer />
       <div className="bg-white rounded-2xl shadow-lg p-6 w-131">
         <div className="flex justify-between items-center">
           <h2 className="text-red-500 font-bold text-center text-lg mx-auto">Cadastrar-se</h2>
@@ -147,24 +164,34 @@ export default function Cadastro() {
             <div>
               <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
               <div>
-                <div className="flex space-x-2 mt-3">
-                  <div className="flex items-center w-full border rounded p-2">
-                    <FaUser className="text-gray-400 mr-2" />
-                    <input type="text" name="primeiroNome" placeholder="Primeiro Nome" className="w-full outline-none text-gray-600" onChange={handleChange} />
-                  </div>
-                  {errors.primeiroNome && <p className="text-red-500 text-sm">{errors.primeiroNome}</p>}
-
-                  <div className="flex items-center w-full border rounded p-2">
-                    <input type="text" name="sobrenome" placeholder="Sobrenome" className="w-full outline-none text-gray-600" onChange={handleChange} />
-                  </div>
-                  {errors.sobrenome && <p className="text-red-500 text-sm">{errors.sobrenome}</p>}
+                <div className="flex space-x-2 mt-3">                 
+                  <RegisterInput
+                    type="text"
+                    inputName="primeiroNome"
+                    icon={FaUser}
+                    placeholder="Primeiro Nome"
+                    onChange={handleChange}
+                    error={errors.primeiroNome}
+                  />
+                  
+                  <RegisterInput
+                    type="text"
+                    inputName="sobrenome"
+                    icon={FaUser}
+                    placeholder="Sobrenome"
+                    onChange={handleChange}
+                    error={errors.sobrenome}
+                  />
                 </div>
-
-                <div className="flex items-center border rounded p-2 mt-3">
-                  <FaCalendarAlt className="text-gray-400 mr-2" />
-                  <input type="date" name="dataNascimento" className="w-full outline-none text-gray-600" onChange={handleChange} />
-                </div>
-                {errors.dataNascimento && <p className="text-red-500 text-sm">{errors.dataNascimento}</p>}
+                
+                <RegisterInput
+                  type="date"
+                  inputName="dataNascimento"
+                  icon={FaCalendarAlt}
+                  placeholder="Nome de usuário"
+                  onChange={handleChange}
+                  error={errors.dataNascimento}
+                />
 
                 <div className="flex items-center border rounded p-2 mt-3">
                   <select name="genero" className="w-full outline-none text-gray-600" onChange={handleChange}>
@@ -177,21 +204,10 @@ export default function Cadastro() {
               </div>
             </div>
 
-            <button
-              onClick={handleGoogleSignup}
-              className="w-full flex items-center mt-8 cursor-pointer justify-center border py-2 rounded-lg mb-2 bg-white hover:bg-gray-100 transition"
-            >
-              <FaGoogle size={20} className="text-gray-400 mr-12" />
-              <span className="text-gray-700 mr-16">Cadastre-se com o Google</span>
-            </button>
-
-            <button
-              onClick={handleFacebookSignup}
-              className="w-full flex items-center cursor-pointer justify-center border py-2 rounded-lg bg-white hover:bg-gray-100 transition"
-            >
-              <FaFacebook size={20} className="text-gray-400 mr-12" />
-              <span className="text-gray-700 mr-12">Cadastre-se com o Facebook</span>
-            </button>
+            <div className="mt-8">
+              <RegisterSignup text="Cadastre-se com o Google" icon={FaGoogle} onClick={handleGoogleSignup} />
+              <RegisterSignup text="Cadastre-se com o Facebook" icon={FaFacebook} onClick={handleFacebookSignup} />
+            </div>
           </div>
         )}
 
@@ -199,29 +215,41 @@ export default function Cadastro() {
           <div>
             <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
             <div>
-              <div className="flex items-center border rounded p-2 mt-3">
-                <FaPhoneAlt className="text-gray-400 mr-2" />
-                <input type="text" name="telefone" placeholder="Número de telefone" className="w-full outline-none text-gray-600" onChange={handleChange} />
-              </div>
-              {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
+              <RegisterInput
+                type="number"
+                inputName="telefone"
+                icon={FaPhoneAlt}
+                placeholder="Número de telefone"
+                onChange={handleChange}
+                error={errors.telefone}
+              />
 
-              <div className="flex items-center border rounded p-2 mt-3">
-                <FaEnvelope className="text-gray-400 mr-2" />
-                <input type="email" name="email" placeholder="E-mail" className="w-full outline-none text-gray-600" onChange={handleChange} />
-              </div>
-              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+              <RegisterInput
+                type="email"
+                inputName="email"
+                icon={FaEnvelope}
+                placeholder="E-mail"
+                onChange={handleChange}
+                error={errors.email}
+              />
 
-              <div className="flex items-center border rounded p-2 mt-3">
-                <FaLock className="text-gray-400 mr-2" />
-                <input type="password" name="senha" placeholder="Senha" className="w-full outline-none text-gray-600" onChange={handleChange} />
-              </div>
-              {errors.senha && <p className="text-red-500 text-sm">{errors.senha}</p>}
+              <RegisterInput
+                type="password"
+                inputName="senha"
+                icon={FaLock}
+                placeholder="Senha"
+                onChange={handleChange}
+                error={errors.senha}
+              />
 
-              <div className="flex items-center border rounded p-2 mt-3">
-                <FaLock className="text-gray-400 mr-2" />
-                <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" className="w-full outline-none text-gray-600" onChange={handleChange} />
-              </div>
-              {errors.confirmarSenha && <p className="text-red-500 text-sm">{errors.confirmarSenha}</p>}
+              <RegisterInput
+                type="password"
+                inputName="confirmarSenha"
+                icon={FaLock}
+                placeholder="Confirmar Senha"
+                onChange={handleChange}
+                error={errors.confirmarSenha}
+              />
             </div>
           </div>
         )}
