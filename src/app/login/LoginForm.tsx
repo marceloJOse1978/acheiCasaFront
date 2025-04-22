@@ -14,11 +14,14 @@ import LoginButton from "./(loginComponents)/LoginButton"
 import LoginInput from "./(loginComponents)/LoginInput";
 import CloseButton from "./(loginComponents)/CloseButton";
 
+import LoginClose from './(loginComponents)/LoginClose'
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -57,15 +60,22 @@ export default function LoginForm() {
       router.push("/home");
     } catch (error) {
       toast.error("Login falhou. Verifique as credenciais.");
-      setError("Login falhou. Verifique as credenciais.");
     }
   };
+
+  const closeForm = () => {
+/*     alert("Deseja fechar isso?")
+    router.push("/"); */
+    return (
+      <LoginClose />
+    )
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <ToastContainer />
       <div className="bg-red rounded-2xl shadow-lg p-6 w-96">
-        <CloseButton onClose={() => alert("Deseja fechar ?")} />
+        <CloseButton onClose={closeForm} />
         <h2 className="text-red-500 font-bold text-center pb-3 mb-1 text-lg">Entre ou cadastrar-se</h2>
         <div className="flex-1 border-t p-1 w-90 border-gray-300"></div>
         <p className="text-gray-700 font-semibold text-md mt-1">Bem-vindo ao Achei!</p>
