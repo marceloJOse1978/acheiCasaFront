@@ -14,14 +14,11 @@ import LoginButton from "./(loginComponents)/LoginButton"
 import LoginInput from "./(loginComponents)/LoginInput";
 import CloseButton from "./(loginComponents)/CloseButton";
 
-import LoginClose from './(loginComponents)/LoginClose'
-
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -43,7 +40,7 @@ export default function LoginForm() {
 
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!email.match(emailPattern)) {
-      setError("Por favor, insira um email válido.");
+      /* setError("Por favor, insira um email válido."); */
       toast.error("Por favor, insira um email válido.");
       return;
     }
@@ -64,17 +61,13 @@ export default function LoginForm() {
   };
 
   const closeForm = () => {
-/*     alert("Deseja fechar isso?")
-    router.push("/"); */
-    return (
-      <LoginClose />
-    )
+    router.push("/");
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="bg-white rounded-2xl">
       <ToastContainer />
-      <div className="bg-red rounded-2xl shadow-lg p-6 w-96">
+      <div className="bg-red shadow-lg rounded-2xl p-6 w-96">
         <CloseButton onClose={closeForm} />
         <h2 className="text-red-500 font-bold text-center pb-3 mb-1 text-lg">Entre ou cadastrar-se</h2>
         <div className="flex-1 border-t p-1 w-90 border-gray-300"></div>
