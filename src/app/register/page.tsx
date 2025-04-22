@@ -7,8 +7,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RegisterSignup from './(RegisterComponents)/registerSignup'
 import RegisterInput from "./(RegisterComponents)/registerInput";
+import RegisterPutID from './(RegisterComponents)/registerPutID'
+import RegisterConfirmData from './(RegisterComponents)/registerConfirmData'
+import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
 
-export default function Cadastro() {
+export default function Register() {
   const [value, setValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -256,31 +259,22 @@ export default function Cadastro() {
 
         {step === 3 && (
           <div>
-            <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
-
-            <label className="mt-2 border border-gray-300 p-2 rounded-md flex items-center cursor-pointer">
-              <FaUpload className="text-gray-400 mr-2" />
-              <span className="text-gray-600 bg-gray-300 rounded-md">Bilhete de Identidade (Frente)</span>
-              <input
-                type="file"
-                name="documentoFrente"
-                className="hidden"
-                onChange={handleFileChange}
+            <p className="mt-4 text-gray-700 font-semibold">Documento de Identidade</p>
+              <RegisterPutID 
+                icon={FaUpload}
+                documentName="documentoFrente" 
+                onChange={handleFileChange} 
+                error={errors.documentoFrente}
+                text="Frente"
               />
-            </label>
-            {errors.documentoFrente && <p className="text-red-500 text-sm">{errors.documentoFrente}</p>}
 
-            <label className="mt-2 border border-gray-300 p-2 rounded-md flex items-center cursor-pointer">
-              <FaUpload className="text-gray-400 mr-2" />
-              <span className="text-gray-600 bg-gray-300 rounded-md">Bilhete de Identidade (Verso)</span>
-              <input
-                type="file"
-                name="documentoVerso"
-                className="hidden"
-                onChange={handleFileChange}
+              <RegisterPutID 
+                icon={FaUpload}
+                documentName="documentoVerso" 
+                onChange={handleFileChange} 
+                error={errors.documentoVerso}
+                text="Verso"
               />
-            </label>
-            {errors.documentoVerso && <p className="text-red-500 text-sm">{errors.documentoVerso}</p>}
           </div>
         )}
 
@@ -289,26 +283,12 @@ export default function Cadastro() {
             <p className="text-left mt-4 text-gray-700 font-semibold ">Confirmação de Dados</p>
 
             <div className="flex space-x-4">
-              <div className="flex items-center border mb-4 rounded p-2 w-full text-gray-400">
-                <FaUser className="text-gray-400 mr-2" />
-                <p>{formData.primeiroNome} {formData.sobrenome}</p>
-              </div>
-
-              <div className="flex items-center border rounded p-2 mb-4 w-full text-gray-400">
-                <FaCalendarAlt className="text-gray-400 mr-2" />
-                <p>{formData.dataNascimento}</p>
-              </div>
+              <RegisterConfirmData icon={FaUser} text={formData.primeiroNome} textAlternative={formData.sobrenome} />
+              <RegisterConfirmData icon={FaCalendarAlt} text={formData.dataNascimento} />
             </div>
 
-            <div className="flex items-center border rounded p-2 mb-4 w-full text-gray-400">
-              <FaPhoneAlt className="text-gray-400 mr-2" />
-              <p>{formData.telefone}</p>
-            </div>
-
-            <div className="flex items-center border rounded p-2 mb-4 w-full text-gray-400">
-              <FaEnvelope className="text-gray-400 mr-2" />
-              <p>{formData.email}</p>
-            </div>
+            <RegisterConfirmData icon={FaPhoneAlt} text={formData.telefone} />
+            <RegisterConfirmData icon={FaEnvelope} text={formData.email} />
 
             <p className="text-left ml-2 mt-8 text-gray-400 text-xs">Confirmação de email</p>
 
@@ -322,7 +302,8 @@ export default function Cadastro() {
                   onChange={handleChange}
                 />
               </div>
-              <button className="rounded mb-4 w-full bg-red-500 text-white hover:bg-red-600 px-2 py-2" onClick={() => alert("Código enviado!")}>
+              
+              <button className="rounded mb-4 w-full bg-red-500 text-white hover:bg-red-600 px-2 py-2 cursor-pointer" onClick={() => toast.error('Código enviado!')}>
                 Reenviar o código
               </button>
             </div>
@@ -331,14 +312,10 @@ export default function Cadastro() {
 
         <div className="flex justify-between mt-4">
           {step > 1 && (
-            <button className="bg-gray-300 px-4 py-2 rounded text-black hover:bg-gray-600" onClick={prevStep}>
-              Voltar
-            </button>
+            <RegisterButtonNav text="Voltar" textColor="text-black" bgColor="bg-gray-300" hoverBgColor="bg-gray-600" onClick={prevStep} />
           )}
           {step < 4 ? (
-            <button className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" onClick={nextStep}>
-              Próximo
-            </button>
+            <RegisterButtonNav text="Próximo" textColor="text-white" bgColor="bg-red-500" hoverBgColor="bg-red-600" onClick={nextStep} />
           ) : (
             <button className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" onClick={() => alert("Cadastro Concluído!")}>
               Finalizar
