@@ -50,7 +50,7 @@ export default function Profile() {
                                 <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
                             </div>
 
-                            <div className="ml-245 h-[130px]">
+                            <div className="ml-284 h-[130px]">
                                 <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
                             </div>
                         </div>
@@ -70,8 +70,8 @@ export default function Profile() {
                     </div>
                     <div>
                         <EditButon text='Editar' icon={Pencil} onClick={handleEditClick} />
-                        {/* <ProfileSave /> */}
                     </div>
+
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
                     <div className=''>
