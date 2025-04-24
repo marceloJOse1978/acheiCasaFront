@@ -1,7 +1,7 @@
 
 interface RegisterConfirmData {
     icon?: React.ElementType;
-    text?:string;
+    text?:string | number;
     textAlternative?:string;
 }
 

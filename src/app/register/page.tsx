@@ -14,6 +14,7 @@ import RegisterComp from './register'
 import StepUserInfo from './steps/StepUserInfo'
 import StepContactInfo from './steps/StepContactInfo'
 import StepDocumentUpload from "./steps/StepDocumentUpload";
+import StepConfirmData from "./steps/StepConfirmData";
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -204,34 +205,15 @@ export default function Register() {
         )}
 
         {step === 4 && (
-          <div>
-            <p className="text-left mt-4 text-gray-700 font-semibold ">Confirmação de Dados</p>
-
-            <div className="flex space-x-4">
-              <RegisterConfirmData icon={FaUser} text={formData.primeiroNome} textAlternative={formData.sobrenome} />
-              <RegisterConfirmData icon={FaCalendarAlt} text={formData.dataNascimento} />
-            </div>
-
-            <RegisterConfirmData icon={FaPhoneAlt} text={formData.telefone} />
-            <RegisterConfirmData icon={FaEnvelope} text={formData.email} />
-
-            <p className="text-left ml-2 mt-8 text-gray-400 text-xs">Confirmação de email</p>
-
-            <div className="flex items-center justify-between gap-[10px]">
-              <div className="border rounded p-2 mb-4 w-80 text-gray-400">
-                <p>{formData.confirmarCodigo}</p>
-                <input
-                  type="text"
-                  placeholder="******"
-                  className="w-80 outline-none text-gray-600 "
-                  onChange={handleChange}
-                />
-              </div>
-              <button className="rounded mb-4 w-full bg-red-500 text-white hover:bg-red-600 px-2 py-2 cursor-pointer" onClick={() => toast.error('Código enviado!')}>
-                Reenviar o código
-              </button>
-            </div>
-          </div>
+           <StepConfirmData
+            FirstName={formData.primeiroNome}
+            LastName={formData.sobrenome}
+            BirthDate={formData.dataNascimento}
+            email={formData.email}
+            phoneNumber={formData.telefone}
+            confirmPass={formData.confirmarCodigo}
+            handleChange={handleChange}
+          />
         )}
 
         <div className="flex justify-between mt-4">
