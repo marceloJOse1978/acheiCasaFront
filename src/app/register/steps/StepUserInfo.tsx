@@ -64,9 +64,9 @@ const StepUserInfo: React.FC<StepUserProps> = (
             <div className="flex items-center border rounded p-2 mt-3">
                 <select name="genero" className="w-full outline-none text-gray-600" onChange={handleChangeGender}>
                     <option value="">Selecione o gênero</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                  </select>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
                 </div>
                 {errorGender && <p className="text-red-500 text-sm">{errorGender}</p>}
             </div>

@@ -11,6 +11,8 @@ interface ConfirmData {
     phoneNumber:string;
     confirmPass:string;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    sendCode:() => void;
+    sendStatus?:boolean;
 }
 
 const StepConfirmData: React.FC<ConfirmData> = ({
@@ -20,8 +22,11 @@ const StepConfirmData: React.FC<ConfirmData> = ({
     email,
     phoneNumber,
     confirmPass,
-    handleChange
+    handleChange,
+    sendCode,
+    sendStatus
 }) => {
+  /* const sendStatus = true */
   return (
     <div>
     <p className="text-left mt-4 text-gray-700 font-semibold ">Confirmação de Dados</p>
@@ -38,17 +43,20 @@ const StepConfirmData: React.FC<ConfirmData> = ({
 
     <div className="flex items-center justify-between gap-[10px]">
       <div className="border rounded p-2 mb-4 w-80 text-gray-400">
-        <p>{confirmPass}</p>
+{/*         <p>Confirmar a passe</p> */}
         <input
           type="text"
           placeholder="******"
           className="w-80 outline-none text-gray-600 "
           onChange={handleChange}
+          name="confirmarCodigo"
         />
       </div>
       <button className="rounded mb-4 w-full bg-red-500 text-white hover:bg-red-600 px-2 py-2 cursor-pointer" 
-        onClick={() => toast.error('Código enviado!')}>
-        Reenviar o código
+        onClick={sendCode}> {
+         sendStatus ? "Enviar o código" :
+         "Reenviar o código"  
+        }
       </button>
     </div>
   </div>

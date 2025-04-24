@@ -9,6 +9,8 @@ import StepUserInfo from './steps/StepUserInfo'
 import StepContactInfo from './steps/StepContactInfo'
 import StepDocumentUpload from "./steps/StepDocumentUpload";
 import StepConfirmData from "./steps/StepConfirmData";
+import {REGISTER, SENDCODE } from '@/app/Req/ApiRegister'
+import { useRouter } from 'next/navigation';
 
 interface props {
   onClose?: () => void | null;
@@ -16,6 +18,7 @@ interface props {
 
 export default function RegisterForm({onClose}:props) {
   const [value, setValue] = useState("");
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -126,9 +129,14 @@ export default function RegisterForm({onClose}:props) {
         valid = false;
       }
     } else if (currentStep === 4) {
-      /*Validação quarto passo */
-      if (!formData.confirmarCodigo || formData.confirmarCodigo.length < 6) {
-        toast.error('Código de confirmação inválido')
+      /* Validação quarto passo */
+
+      
+      if (!formData.confirmarCodigo) {
+        toast.error('Código de confirmação não informado');
+        valid = false;
+      } else if (formData.confirmarCodigo.length < 6) {
+        toast.error(`Código de confirmação inválido (${formData.confirmarCodigo.length} caracteres)`);
         valid = false;
       }
     }
@@ -142,6 +150,29 @@ export default function RegisterForm({onClose}:props) {
   const handleFacebookSignup = () => {
     alert("Sign up com Facebook");
   };
+
+  const sendCode = async () => {
+    try {
+      const res = await SENDCODE(formData.email);
+  
+      if (res?.status === 1) {
+        toast.success("Código de confirmação enviado com sucesso!");
+      } else {
+        // Exibe a mensagem genérica
+        toast.error(res?.message || "Erro ao enviar código.");
+  
+        // Se houver erros específicos (ex: email)
+        if (res?.errors?.email) {
+          res.errors.email.forEach((msg: string) => {
+            toast.error("Email já existente");
+          });
+        }
+      }
+    } catch (error: any) {
+      toast.error(error?.message || "Erro inesperado ao enviar o código.");
+    }
+  };
+  
 
   return (
     <>
@@ -206,6 +237,7 @@ export default function RegisterForm({onClose}:props) {
             phoneNumber={formData.telefone}
             confirmPass={formData.confirmarCodigo}
             handleChange={handleChange}
+            sendCode={sendCode}
           />
         )}
 
@@ -231,7 +263,33 @@ export default function RegisterForm({onClose}:props) {
               textColor="text-white" 
               bgColor="bg-red-500" 
               hoverBgColor="bg-red-600" 
-              onClick={() => toast.success("Cadastro Concluído!")} />
+              onClick={async () => {
+                if (validateStep(4)) {
+                  try {
+                    const res = await REGISTER({
+                      ...formData,
+                      documentoFrente: formData.documentoFrente!,
+                      documentoVerso: formData.documentoVerso!,
+                    });
+            
+                    if (res?.success === true) {
+                      toast.success("Cadastro realizado com sucesso!");
+                      
+                      if (res.token) {
+                        localStorage.setItem('token', res.token);
+                      }
+                      
+                      router.push('/home');
+                      onClose?.();
+                    } else {
+                      toast.error(res?.message || "Erro ao cadastrar");
+                    }
+                  } catch (err) {
+                    toast.error("Erro no servidor. Tente novamente.");
+                  }
+                }
+              }}
+            />
           )}
         </div>
       </div>
