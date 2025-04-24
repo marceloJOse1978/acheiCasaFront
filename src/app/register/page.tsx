@@ -12,6 +12,7 @@ import RegisterConfirmData from './(RegisterComponents)/registerConfirmData'
 import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
 import RegisterComp from './register'
 import StepUserInfo from './steps/StepUserInfo'
+import StepContactInfo from './steps/StepContactInfo'
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -180,46 +181,16 @@ export default function Register() {
         )}
 
         {step === 2 && (
-          <div>
-            <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
-            <div>
-              <RegisterInput
-                type="number"
-                inputName="telefone"
-                icon={FaPhoneAlt}
-                placeholder="Número de telefone"
-                onChange={handleChange}
-                error={errors.telefone}
-              />
-
-              <RegisterInput
-                type="email"
-                inputName="email"
-                icon={FaEnvelope}
-                placeholder="E-mail"
-                onChange={handleChange}
-                error={errors.email}
-              />
-
-              <RegisterInput
-                type="password"
-                inputName="senha"
-                icon={FaLock}
-                placeholder="Senha"
-                onChange={handleChange}
-                error={errors.senha}
-              />
-
-              <RegisterInput
-                type="password"
-                inputName="confirmarSenha"
-                icon={FaLock}
-                placeholder="Confirmar Senha"
-                onChange={handleChange}
-                error={errors.confirmarSenha}
-              />
-            </div>
-          </div>
+          <StepContactInfo 
+            handleChangePhone={handleChange}
+            errorPhone={errors.telefone}
+            handleChangeEmail={handleChange}
+            errorEmail={errors.email}
+            handleChangePassword={handleChange}
+            errorPassword={errors.email}
+            handleChangeConfirmPass={handleChange}
+            errorConfirmPass={errors.confirmarSenha}
+          />
         )}
 
         {step === 3 && (

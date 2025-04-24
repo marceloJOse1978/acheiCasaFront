@@ -34,7 +34,7 @@ const StepUserInfo: React.FC<StepUserProps> = (
   return (
     <div>
         <div>
-            <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
+            <p className="mt-4 text-gray-700 font-semibold">Dados do Pessoais</p>
             <div className='flex space-x-2 mt-3'>
                 <RegisterInput
                     type="text"
