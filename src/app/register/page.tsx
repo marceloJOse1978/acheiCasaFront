@@ -13,6 +13,7 @@ import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
 import RegisterComp from './register'
 import StepUserInfo from './steps/StepUserInfo'
 import StepContactInfo from './steps/StepContactInfo'
+import StepDocumentUpload from "./steps/StepDocumentUpload";
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -194,24 +195,12 @@ export default function Register() {
         )}
 
         {step === 3 && (
-          <div>
-            <p className="mt-4 text-gray-700 font-semibold">Documento de Identidade</p>
-              <RegisterPutID 
-                icon={FaUpload}
-                documentName="documentoFrente" 
-                onChange={handleFileChange} 
-                error={errors.documentoFrente}
-                text="Frente"
-              />
-
-              <RegisterPutID 
-                icon={FaUpload}
-                documentName="documentoVerso" 
-                onChange={handleFileChange} 
-                error={errors.documentoVerso}
-                text="Verso"
-              />
-          </div>
+          <StepDocumentUpload 
+            onChangeDocumentFront={handleFileChange}
+            errorFront={errors.documentoFrente}
+            onChangeVerse={handleFileChange}
+            errorVerse={errors.documentoVerso}
+          />          
         )}
 
         {step === 4 && (
