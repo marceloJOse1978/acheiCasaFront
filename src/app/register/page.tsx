@@ -11,6 +11,7 @@ import RegisterPutID from './(RegisterComponents)/registerPutID'
 import RegisterConfirmData from './(RegisterComponents)/registerConfirmData'
 import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
 import RegisterComp from './register'
+import StepUserInfo from './steps/StepUserInfo'
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -161,58 +162,21 @@ export default function Register() {
           ))}
         </div>
 
-        <div className="flex-1 border-t mt-5 w-full ml-6 pr-2 border-gray-300"></div>
+        <div className="flex-1 border-t mt-5 w-full ml-0 pr-2 border-gray-300"></div>
 
         {step === 1 && (
-          <div>
-            <div>
-              <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
-              <div>
-                <div className="flex space-x-2 mt-3">                 
-                  <RegisterInput
-                    type="text"
-                    inputName="primeiroNome"
-                    icon={FaUser}
-                    placeholder="Primeiro Nome"
-                    onChange={handleChange}
-                    error={errors.primeiroNome}
-                  />
-                  
-                  <RegisterInput
-                    type="text"
-                    inputName="sobrenome"
-                    icon={FaUser}
-                    placeholder="Sobrenome"
-                    onChange={handleChange}
-                    error={errors.sobrenome}
-                  />
-                </div>
-                
-                <RegisterInput
-                  type="date"
-                  inputName="dataNascimento"
-                  icon={FaCalendarAlt}
-                  placeholder="Nome de usuário"
-                  onChange={handleChange}
-                  error={errors.dataNascimento}
-                />
-
-                <div className="flex items-center border rounded p-2 mt-3">
-                  <select name="genero" className="w-full outline-none text-gray-600" onChange={handleChange}>
-                    <option value="">Selecione o gênero</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                  </select>
-                </div>
-                {errors.genero && <p className="text-red-500 text-sm">{errors.genero}</p>}
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <RegisterSignup text="Cadastre-se com o Google" icon={FaGoogle} onClick={handleGoogleSignup} />
-              <RegisterSignup text="Cadastre-se com o Facebook" icon={FaFacebook} onClick={handleFacebookSignup} />
-            </div>
-          </div>
+          <StepUserInfo 
+            handleGoogleSignup={handleGoogleSignup} 
+            handleFacebookSignup={handleFacebookSignup} 
+            errorPrimeiroNome={errors.primeiroNome}
+            handleChangePrimeiroNome={handleChange}
+            errorSobrenome={errors.sobrenome}
+            handleChangeSobrenome={handleChange}
+            errrorDate={errors.dataNascimento}
+            handleChangeDate={handleChange}
+            handleChangeGender={handleChange}
+            errorGender={errors.genero}
+          />
         )}
 
         {step === 2 && (

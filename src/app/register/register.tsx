@@ -11,6 +11,7 @@ import RegisterPutID from './(RegisterComponents)/registerPutID'
 import RegisterConfirmData from './(RegisterComponents)/registerConfirmData'
 import RegisterButtonNav from './(RegisterComponents)/registerButtonNav'
 import RegisterHeader from './RegisterHeader'
+import StepUserInfo from './steps/StepUserInfo'
 
 export default function Register() {
   const [value, setValue] = useState("");
@@ -167,6 +168,7 @@ export default function Register() {
         {step === 1 && (
           <div>
             <div>
+              {/* <StepUserInfo /> */}
               <p className="mt-4 text-gray-700 font-semibold">Informação do Usuário</p>
               <div>
                 <div className="flex space-x-2 mt-3">                 
