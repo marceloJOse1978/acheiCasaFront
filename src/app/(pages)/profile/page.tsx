@@ -72,7 +72,7 @@ export default function Profile(){
                             text='Cancelar' 
                             icon={Ban} 
                             bgColor="#999" 
-                            visible={isEditing} // Só mostra quando está em modo edição
+                            visible={isEditing}
                             onClick={handleCancelClick}
                         />
                     </div>
@@ -87,7 +87,6 @@ export default function Profile(){
                             <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} isEditable={isEditing} />
                         </div>
                     </div>
-                    {/* <EditButon onClick={handleEditClick} /> */}
                 </ProfileContainer>
             </div>
         </section>
