@@ -6,6 +6,7 @@ import { KeyRound, UserRound } from "lucide-react";
 import ToggleButton from "./HeaderToggleButton";
 import SideMenu from "./HeaderSideMenu";
 import Overlay from "./HeaderOverlay";
+import LoginForm from "@/app/login/LoginForm";
 import "./style.css";
 
 interface HeaderProps {
@@ -18,6 +19,7 @@ export default function UserMenu({ disabledMenu, buttonLogin }: HeaderProps) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [activeLink, setActiveLink] = useState<string>("");
+  const [showLogin, setShowLogin] = useState(false);
 
   function toggleMenu() {
     if (menuOpen) {
@@ -47,6 +49,10 @@ export default function UserMenu({ disabledMenu, buttonLogin }: HeaderProps) {
     setActiveLink(href);
   };
 
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  };
+
   return (
     <div className="relative">
       {!disabledMenu ? (
@@ -59,9 +65,20 @@ export default function UserMenu({ disabledMenu, buttonLogin }: HeaderProps) {
       ) : (
         <div className="menu-area flex items-center gap-1 md:gap-4 p-[0.1em] md:p-[0.8em] shadow-md shadow-black/10 rounded-[30px] z-50">
           <ToggleButton onClick={toggleMenu} />
-          <Link href="/login" className="user-icon flex items-center justify-center p-2 rounded-full hover:bg-gray-100 transition hidden lg:block" aria-label="Área do Usuário">
+          <button
+            className="cursor-pointer user-icon flex items-center justify-center p-2 rounded-full hover:bg-gray-100 transition hidden lg:block"
+            aria-label="Área do Usuário"
+            onClick={handleLoginClick}
+          >
             <KeyRound className="text-red-500 w-6 h-6" />
-          </Link>
+          </button>
+
+          {/* Modal fora do botão! */}
+          {showLogin && (
+            <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-[9999]">
+              <LoginForm localState={false} onClose={() => setShowLogin(false)} />
+            </div>
+          )}
         </div>
       )}    
 

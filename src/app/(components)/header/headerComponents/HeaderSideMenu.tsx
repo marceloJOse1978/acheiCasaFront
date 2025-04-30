@@ -1,5 +1,8 @@
 import ProfileSection from './HeaderProfileSection';
 import NavSection from './HeaderNavSection';
+import {USERDATA} from '@/app/Req/ApiUser'
+import { useState, useEffect } from 'react'
+
 
 interface SideMenuProps {
   visible: boolean;
@@ -10,6 +13,21 @@ interface SideMenuProps {
 }
 
 export default function SideMenu({ visible, isLargeScreen, toggleMenu, activeLink, handleClick }: SideMenuProps) {
+  const [user, setUser] = useState<any>(null);
+  useEffect(()=> {
+    async function fechUsers(){
+      try {
+        const object = await USERDATA();
+        setUser(object);
+        console.log("Dados do user", object)
+      } catch(error) {
+        console.log("erro ao pergar: ", error)
+      }
+    }
+    fechUsers()
+  }, [])
+  const userDataObject = user?.data || null;
+  console.log("objecto data", userDataObject)
   return (
     <div 
       id="sideMenu" 
@@ -32,7 +50,7 @@ export default function SideMenu({ visible, isLargeScreen, toggleMenu, activeLin
         </button>
       )}
       
-      <ProfileSection />
+      <ProfileSection user={userDataObject} />
       <NavSection activeLink={activeLink} handleClick={handleClick} />
     </div>
   );

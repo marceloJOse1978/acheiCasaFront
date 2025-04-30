@@ -1,0 +1,1 @@
+export const API_URL = 'https://achei-casa-api.mtapp.ao/api';
