@@ -11,7 +11,8 @@ import Loader from '@/app/(components)/Loader/loader'
 import ProfileSave from './(ProfileComponents)/ProfileSave'
 import { Ban, Pencil, Save } from 'lucide-react';
 import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit'
-import {USERDATA} from '@/app/Req/ApiUser'
+import ProfileEditData from './(ProfileComponents)/ProfileEditData'
+import { USERDATA } from '@/app/Req/ApiUser'
 /* import { useState, useEffect } from 'react' */
 
 export default function Profile(){
@@ -60,16 +61,7 @@ export default function Profile(){
                     <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                   {/*  <div className=''>
-                        <Title text='Informações Pessoais' />
-                        <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].firstName} isEditable={isEditing} />
-                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].lastName} isEditable={isEditing} />
-                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].email} isEditable={isEditing} />
-                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].phone} isEditable={isEditing} />
-                            <ShowInformation keyText='Biografia' keyValue={users[0].bio} isEditable={isEditing} />
-                        </div>
-                    </div> */}
+                    <ProfileEditData isEditing={isEditing} user={users[0]} />
                     <div className=''>
                         <EditButon 
                             text={isEditing ? 'Salvar' : 'Editar'}
@@ -83,7 +75,6 @@ export default function Profile(){
                             visible={isEditing} // Só mostra quando está em modo edição
                             onClick={handleCancelClick}
                         />
-                        {/* <ProfileSave /> */}
                     </div>
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
