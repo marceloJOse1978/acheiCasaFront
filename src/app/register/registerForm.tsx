@@ -234,7 +234,7 @@ export default function RegisterForm({onClose}:props) {
             LastName={formData.sobrenome}
             BirthDate={formData.dataNascimento}
             email={formData.email}
-            phoneNumber={formData.telefone}
+            phoneNumber={formData.telefone.slice(0, 9)}
             confirmPass={formData.confirmarCodigo}
             handleChange={handleChange}
             sendCode={sendCode}
@@ -276,7 +276,7 @@ export default function RegisterForm({onClose}:props) {
                       toast.success("Cadastro realizado com sucesso!");
                       
                       if (res.token) {
-                        localStorage.setItem('token', res.token);
+                        document.cookie = `token=${res.token}; path=/;`;
                       }
                       
                       router.push('/home');

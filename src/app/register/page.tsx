@@ -1,6 +1,6 @@
 
 "use client";
-import RegisterForm from './registerForm'
+import RegisterForm from './RegisterForm'
 
 export default function Register() {
   return (
