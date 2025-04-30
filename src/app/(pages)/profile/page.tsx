@@ -60,7 +60,7 @@ export default function Profile(){
                     <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                    <div className=''>
+                   {/*  <div className=''>
                         <Title text='Informações Pessoais' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
                             <ShowInformation keyText='Primeiro Nome' keyValue={users[0].firstName} isEditable={isEditing} />
@@ -69,7 +69,7 @@ export default function Profile(){
                             <ShowInformation keyText='N° de Telefone' keyValue={users[0].phone} isEditable={isEditing} />
                             <ShowInformation keyText='Biografia' keyValue={users[0].bio} isEditable={isEditing} />
                         </div>
-                    </div>
+                    </div> */}
                     <div className=''>
                         <EditButon 
                             text={isEditing ? 'Salvar' : 'Editar'}
