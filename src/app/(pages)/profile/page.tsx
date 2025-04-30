@@ -10,10 +10,28 @@ import ProfileContainer from './(ProfileComponents)/ProfileContainer'
 import Loader from '@/app/(components)/Loader/loader'
 import ProfileSave from './(ProfileComponents)/ProfileSave'
 import { Ban, Pencil, Save } from 'lucide-react';
+import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit'
+import {USERDATA} from '@/app/Req/ApiUser'
+/* import { useState, useEffect } from 'react' */
 
 export default function Profile(){
     const [loading, setLoading] = useState(true)
     const [isEditing, setIsEditing] = useState(false);
+    const [user, setUser] = useState<any>(null);
+  useEffect(()=> {
+    async function fechUsers(){
+      try {
+        const object = await USERDATA();
+        setUser(object);
+        console.log("Dados do user", object)
+      } catch(error) {
+        console.log("erro ao pergar: ", error)
+      }
+    }
+    fechUsers()
+  }, [])
+  const userDataObject = user?.data || null;
+  console.log("objecto data", userDataObject)
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -39,19 +57,7 @@ export default function Profile(){
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
                 <ProfileContainer marginTop={0}>
-                    {users.map((user) => (
-                    <div key={user.id} className="flex items-center justify-start gap-4">
-                        <figure className='w-[130px] h-[130px] rounded-full p-[5px] bg-[#FF453A] shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden select-none'>
-                            <img src={user.image} alt={user.name} className="w-full h-full object-cover rounded-full select-none" />
-                        </figure>
-                        <div>
-                            <p className="font-bold text-2xl leading-none tracking-normal  text-[#000000] select-none">{user.name}</p>
-                            <p className='my-[5px] font-normal text-base leading-none tracking-normal text-[#999999] select-none'>{user.role}</p>
-                            <p className='font-normal italic text-[13px] leading-none tracking-normal text-[#999999] select-none'>{user.address}</p>
-                        </div>
-                    </div>
-                    ))}
-                   {/*  <EditButon onClick={handleEditClick} /> */}
+                    <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
                     <div className=''>
