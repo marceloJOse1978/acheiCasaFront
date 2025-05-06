@@ -18,6 +18,7 @@ const RecoverPass: React.FC = () => {
       const response = await APIRECOVER({ email });
       if (response?.success === true) {
         sessionStorage.setItem("recoveryCode", response.code);
+        sessionStorage.setItem("recoveryEmail", email);
         toast.success("Código enviado no seu E-mail!");
         window.location.href = "/login/reset";
       } else {
