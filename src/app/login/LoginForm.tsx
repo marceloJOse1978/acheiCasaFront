@@ -6,6 +6,7 @@ import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { login } from "../../services/authService";
 import LoginButton from "./(loginComponents)/LoginButton";
@@ -106,7 +107,9 @@ export default function LoginForm({ localState, onClose }: LoginFormProps) {
           Icon={HiOutlineLockClosed}
         />
 
-        <p className="text-right text-sm text-gray-500 mt-2 cursor-pointer">Esqueci a minha palavra-passe</p>
+        <p className="text-right text-sm text-gray-500 mt-2 cursor-pointer">
+          <Link href="login/recover">Esqueci a minha palavra-passe</Link>
+        </p>
         <ButtonComponent text="Entrar" onClick={handleSubmit} />
 
         <button onClick={openRegister} className="text-left text-sm text-gray-500 mt-2">
