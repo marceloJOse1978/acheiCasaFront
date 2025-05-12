@@ -2,7 +2,7 @@ import { API_URL } from "./url";
 
 export async function USERDATA() {
   try {
-    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+    const token = localStorage.getItem('token'); 
 
     const response = await fetch(`${API_URL}/me`, {
       method: 'GET',

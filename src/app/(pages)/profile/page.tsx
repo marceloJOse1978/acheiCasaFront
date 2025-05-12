@@ -61,7 +61,7 @@ export default function Profile(){
                     <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                    <ProfileEditData isEditing={isEditing} user={users[0]} />
+                    <ProfileEditData isEditing={isEditing} user={userDataObject} />
                     <div className=''>
                         <EditButon 
                             text={isEditing ? 'Salvar' : 'Editar'}
@@ -81,10 +81,10 @@ export default function Profile(){
                     <div className=''>
                         <Title text='Endereço' />
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='Primeiro Nome' keyValue={users[0].country} isEditable={isEditing} />
-                            <ShowInformation keyText='Segundo Nome' keyValue={users[0].province} isEditable={isEditing} />
-                            <ShowInformation keyText='Endereço de E-mail' keyValue={users[0].city} isEditable={isEditing} />
-                            <ShowInformation keyText='N° de Telefone' keyValue={users[0].postalCode} isEditable={isEditing} />
+                            <ShowInformation keyText='País de Origem' keyValue={userDataObject.country || 'Não disponível'} isEditable={isEditing} />
+                            <ShowInformation keyText='Província' keyValue={userDataObject.province || 'Não disponível'} isEditable={isEditing} />
+                            <ShowInformation keyText='Município' keyValue={userDataObject.municipality || 'Não disponível'} isEditable={isEditing} />
+                            <ShowInformation keyText='Caixa Postal' keyValue={userDataObject.postal_code || 'Não disponível'} isEditable={isEditing} />
                         </div>
                     </div>
                 </ProfileContainer>
