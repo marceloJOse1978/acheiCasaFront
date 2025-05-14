@@ -4,10 +4,12 @@ export default function ShowInformation({
   keyText,
   keyValue,
   isEditable = false,
+  onChange,
 }: {
   keyText: string;
   keyValue: string;
   isEditable?: boolean;
+  onChange?: (value: string) => void;
 }) {
   const [inputValue, setInputValue] = useState(keyValue);
 
@@ -17,14 +19,19 @@ export default function ShowInformation({
 
   return (
     <div className="select-none">
-      <p className="font-semibold text-sm leading-none tracking-normal text-gray-500">{keyText}</p>
+      <p className="font-semibold text-sm leading-none tracking-normal text-gray-500">
+        {keyText}
+      </p>
       <input
         type="text"
         className={`w-full h-[40px] rounded-[5px] px-4 py-2 text-sm leading-none tracking-normal mt-[3px] 
           ${isEditable ? 'bg-white text-[#000000] border border-[#FF453A] outline-none' : 'bg-[#F5F5F5] text-[#999999] border border-transparent'}
         `}
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+          if (onChange) onChange(e.target.value);
+        }}
         readOnly={!isEditable}
       />
     </div>

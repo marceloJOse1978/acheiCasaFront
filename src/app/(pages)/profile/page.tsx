@@ -6,41 +6,46 @@ import ShowInformation from './(ProfileComponents)/ProfileInformation';
 import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/ProfileMenu';
 import EditButon from './(ProfileComponents)/ProfileEditButton';
-import ProfileContainer from './(ProfileComponents)/ProfileContainer'
-import Loader from '@/app/(components)/Loader/loader'
-import ProfileSave from './(ProfileComponents)/ProfileSave'
+import ProfileContainer from './(ProfileComponents)/ProfileContainer';
+import Loader from '@/app/(components)/Loader/loader';
 import { Ban, Pencil, Save } from 'lucide-react';
-import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit'
-import ProfileEditData from './(ProfileComponents)/ProfileEditData'
-import { USERDATA } from '@/app/Req/ApiUser'
-/* import { useState, useEffect } from 'react' */
+import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit';
+import ProfileEditData from './(ProfileComponents)/ProfileEditData';
+import { USERDATA } from '@/app/Req/ApiUser';
 
 export default function Profile(){
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
     const [user, setUser] = useState<any>(null);
-  useEffect(()=> {
-    async function fechUsers(){
-      try {
-        const object = await USERDATA();
-        setUser(object);
-        console.log("Dados do user", object)
-      } catch(error) {
-        console.log("erro ao pergar: ", error)
-      }
-    }
-    fechUsers()
-  }, [])
-  const userDataObject = user?.data || null;
-  console.log("objecto data", userDataObject)
+    const [formData, setFormData] = useState<any>({});
+
+    useEffect(() => {
+        async function fechUsers(){
+            try {
+                const object = await USERDATA();
+                setUser(object);
+                console.log("Dados do user", object);
+            } catch(error) {
+                console.log("erro ao pergar: ", error);
+            }
+        }
+        fechUsers();
+    }, []);
+
+    // ⚠️ Preenche formData apenas uma vez quando os dados do user estiverem disponíveis
+    useEffect(() => {
+        if (user?.data) {
+            setFormData(user.data);
+        }
+    }, [user]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setLoading(false)
-        }, 1500)
+            setLoading(false);
+        }, 1500);
 
-        return () => clearTimeout(timer)
-    }, [])
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleEditClick = () => {
         setIsEditing(prev => !prev);
@@ -49,10 +54,19 @@ export default function Profile(){
 
     const handleCancelClick = () => {
         setIsEditing(false);
-        console.log("cancelar")
+        console.log("cancelar");
     };
 
-    if (loading) return <Loader />
+    const handleSaveClick = () => {
+        console.log("salvando");
+        console.log("Dados do formulário:", formData);
+        setIsEditing(false);
+    };
+
+    if (loading) return <Loader />;
+
+    const userDataObject = user?.data || {};
+
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
@@ -61,12 +75,15 @@ export default function Profile(){
                     <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                    <ProfileEditData isEditing={isEditing} user={userDataObject} />
+                    <ProfileEditData 
+                        isEditing={isEditing} 
+                        user={formData} 
+                    />
                     <div className=''>
                         <EditButon 
                             text={isEditing ? 'Salvar' : 'Editar'}
                             icon={isEditing ? Save : Pencil} 
-                            onClick={handleEditClick} 
+                            onClick={isEditing ? handleSaveClick : handleEditClick}
                         />
                         <EditButon
                             text='Cancelar' 
@@ -90,5 +107,5 @@ export default function Profile(){
                 </ProfileContainer>
             </div>
         </section>
-    )
+    );
 }
