@@ -1,6 +1,5 @@
 "use client";
 
-import users from '../../objects/obje'; 
 import React, { useState, useEffect } from 'react';
 import ShowInformation from './(ProfileComponents)/ProfileInformation';
 import Title from './(ProfileComponents)/Title';
@@ -11,7 +10,9 @@ import Loader from '@/app/(components)/Loader/loader';
 import { Ban, Pencil, Save } from 'lucide-react';
 import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit';
 import ProfileEditData from './(ProfileComponents)/ProfileEditData';
+import ProfileAddressData from './(ProfileComponents)/ProfileEditDataAddress'
 import { USERDATA } from '@/app/Req/ApiUser';
+/* import { APIPROFILESAVE } from '@/app/Req/ApiProfileSave' */
 
 export default function Profile(){
     const [loading, setLoading] = useState(true);
@@ -59,7 +60,7 @@ export default function Profile(){
 
     const handleSaveClick = () => {
         console.log("salvando");
-        console.log("Dados do formulário:", formData);
+        /* console.log("Dados do formulário:", formData); */
         setIsEditing(false);
     };
 
@@ -95,13 +96,37 @@ export default function Profile(){
                     </div>
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
+                    <ProfileAddressData  
+                        isEditing={isEditing} 
+                        user={formData}  /> 
                     <div className=''>
-                        <Title text='Endereço' />
+                        {/* <Title text='Endereço' /> */}
                         <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='País de Origem' keyValue={userDataObject.country || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Província' keyValue={userDataObject.province || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Município' keyValue={userDataObject.municipality || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Caixa Postal' keyValue={userDataObject.postal_code || 'Não disponível'} isEditable={isEditing} />
+                       {/*  <ShowInformation
+                            keyText="País de Origem"
+                            keyValue={formData.country || ''}
+                            isEditable={isEditing}
+                            onChange={(value) => setFormData({ ...formData, country: value })} /> */}
+                        {/* <ShowInformation
+                            keyText="Província"
+                            keyValue={formData.province || ''}
+                            isEditable={isEditing}
+                            onChange={(value) => setFormData({ ...formData, province: value })}
+                            /> */}
+
+                      {/*   <ShowInformation
+                            keyText="Município"
+                            keyValue={formData.municipality || ''}
+                            isEditable={isEditing}
+                            onChange={(value) => setFormData({ ...formData, municipality: value })}
+                            />
+ */}
+                       {/*  <ShowInformation
+                            keyText="Caixa Postal"
+                            keyValue={formData.postal_code || ''}
+                            isEditable={isEditing}
+                            onChange={(value) => setFormData({ ...formData, postal_code: value })}
+                            /> */}
                         </div>
                     </div>
                 </ProfileContainer>
