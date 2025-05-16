@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import ShowInformation from './(ProfileComponents)/ProfileInformation';
-import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/ProfileMenu';
 import EditButon from './(ProfileComponents)/ProfileEditButton';
 import ProfileContainer from './(ProfileComponents)/ProfileContainer';
@@ -12,7 +10,7 @@ import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit';
 import ProfileEditData from './(ProfileComponents)/ProfileEditData';
 import ProfileAddressData from './(ProfileComponents)/ProfileEditDataAddress'
 import { USERDATA } from '@/app/Req/ApiUser';
-/* import { APIPROFILESAVE } from '@/app/Req/ApiProfileSave' */
+import APIPROFILESAVE from '@/app/Req/ApiProfileSave';
 
 export default function Profile(){
     const [loading, setLoading] = useState(true);
@@ -33,7 +31,6 @@ export default function Profile(){
         fechUsers();
     }, []);
 
-    // ⚠️ Preenche formData apenas uma vez quando os dados do user estiverem disponíveis
     useEffect(() => {
         if (user?.data) {
             setFormData(user.data);
@@ -58,10 +55,14 @@ export default function Profile(){
         console.log("cancelar");
     };
 
-    const handleSaveClick = () => {
-        console.log("salvando");
-        /* console.log("Dados do formulário:", formData); */
-        setIsEditing(false);
+    const handleSaveClick = async () => {
+        try {
+            setIsEditing(false);
+            const result = await APIPROFILESAVE(formData);
+            console.log("Perfil atualizado com sucesso:", result);
+        } catch (error) {
+            console.error("Erro ao salvar perfil:", error);
+        }
     };
 
     if (loading) return <Loader />;
@@ -79,6 +80,7 @@ export default function Profile(){
                     <ProfileEditData 
                         isEditing={isEditing} 
                         user={formData} 
+                        onChange={setFormData}
                     />
                     <div className=''>
                         <EditButon 
@@ -98,37 +100,9 @@ export default function Profile(){
                 <ProfileContainer marginTop={0}>
                     <ProfileAddressData  
                         isEditing={isEditing} 
-                        user={formData}  /> 
-                    <div className=''>
-                        {/* <Title text='Endereço' /> */}
-                        <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                       {/*  <ShowInformation
-                            keyText="País de Origem"
-                            keyValue={formData.country || ''}
-                            isEditable={isEditing}
-                            onChange={(value) => setFormData({ ...formData, country: value })} /> */}
-                        {/* <ShowInformation
-                            keyText="Província"
-                            keyValue={formData.province || ''}
-                            isEditable={isEditing}
-                            onChange={(value) => setFormData({ ...formData, province: value })}
-                            /> */}
-
-                      {/*   <ShowInformation
-                            keyText="Município"
-                            keyValue={formData.municipality || ''}
-                            isEditable={isEditing}
-                            onChange={(value) => setFormData({ ...formData, municipality: value })}
-                            />
- */}
-                       {/*  <ShowInformation
-                            keyText="Caixa Postal"
-                            keyValue={formData.postal_code || ''}
-                            isEditable={isEditing}
-                            onChange={(value) => setFormData({ ...formData, postal_code: value })}
-                            /> */}
-                        </div>
-                    </div>
+                        user={formData} 
+                        onChange={setFormData}
+                    /> 
                 </ProfileContainer>
             </div>
         </section>
