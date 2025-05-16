@@ -3,6 +3,9 @@
 import React from 'react'
 import Title from '../(ProfileComponents)/Title';
 import ShowInformation from '../(ProfileComponents)/ProfileInformation';
+import ProfileEditList from './ProfileListCountry'
+import ProfileListCountry from './ProfileListCountry';
+
 
 // Define apenas os campos usados neste componente
 interface UserDataAddress {
@@ -33,12 +36,18 @@ const ProfileEditDataAddress = ({ isEditing, user, onChange }: DataProps) => {
     <div>
       <Title text="Endereço" />
       <div className="grid grid-cols-2 gap-[45px] mt-4">
-        <ShowInformation
+      <ProfileListCountry
+        keyText="País de Origem"
+        value={user?.country || ''}
+        isEditable={isEditing}
+        onChange={(val) => handleFieldChange('country', val)}
+      />
+        {/* <ShowInformation
           keyText="País de Origem"
           keyValue={user?.country || ''}
           isEditable={isEditing}
           onChange={(val) => handleFieldChange('country', val)}
-        />
+        /> */}
         <ShowInformation
           keyText="Província"
           keyValue={user?.province || ''}

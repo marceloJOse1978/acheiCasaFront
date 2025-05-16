@@ -11,6 +11,8 @@ import ProfileEditData from './(ProfileComponents)/ProfileEditData';
 import ProfileAddressData from './(ProfileComponents)/ProfileEditDataAddress'
 import { USERDATA } from '@/app/Req/ApiUser';
 import APIPROFILESAVE from '@/app/Req/ApiProfileSave';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile(){
     const [loading, setLoading] = useState(true);
@@ -57,11 +59,32 @@ export default function Profile(){
 
     const handleSaveClick = async () => {
         try {
-            setIsEditing(false);
             const result = await APIPROFILESAVE(formData);
-            console.log("Perfil atualizado com sucesso:", result);
+    
+            if (result.success === true) {
+                console.log("Perfil atualizado com sucesso:", result);
+                toast.success("Perfil alterado com sucesso.");
+                setIsEditing(false);
+            } else {
+                console.log("Perfil não atualizado com sucesso:", result);
+                toast.error("Perfil não atualizado com sucesso.");
+    
+                if (result.errors) {
+                    for (const field in result.errors) {
+                        if (Array.isArray(result.errors[field])) {
+                            result.errors[field].forEach((msg: string) => {
+                                toast.error(`${field}: ${msg}`);
+                            });
+                        }
+                    }
+                } else {
+                    toast.error("Erro ao atualizar o perfil. Tente novamente.");
+                }
+            }
+    
         } catch (error) {
             console.error("Erro ao salvar perfil:", error);
+            toast.error("Erro inesperado ao salvar perfil.");
         }
     };
 
@@ -71,6 +94,7 @@ export default function Profile(){
 
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
+            <ToastContainer />
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
                 <ProfileContainer marginTop={0}>

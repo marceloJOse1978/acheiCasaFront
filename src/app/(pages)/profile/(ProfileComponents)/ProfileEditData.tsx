@@ -32,24 +32,24 @@ const ProfileEditData = ({ isEditing, user, onChange }: DataProps) => {
     <div>
       <Title text="Informações Pessoais" />
       <div className="grid grid-cols-2 gap-[45px] mt-4">
-        <ShowInformation
-          keyText="Primeiro Nome"
-          keyValue={user?.first_name || ''}
-          isEditable={isEditing}
-          onChange={(val) => handleFieldChange('first_name', val)}
-        />
-        <ShowInformation
-          keyText="Segundo Nome"
-          keyValue={user?.last_name || ''}
-          isEditable={isEditing}
-          onChange={(val) => handleFieldChange('last_name', val)}
-        />
-        <ShowInformation
-          keyText="Endereço de E-mail"
-          keyValue={user?.email || ''}
-          isEditable={isEditing}
-          onChange={(val) => handleFieldChange('email', val)}
-        />
+      <ShowInformation
+        keyText="Primeiro Nome"
+        keyValue={user?.first_name || ''}
+        isEditable={isEditing}
+        onChange={(val) => handleFieldChange('first_name', val)}
+      />
+      <ShowInformation
+        keyText="Segundo Nome"
+        keyValue={user?.last_name || ''}
+        isEditable={isEditing}
+        onChange={(val) => handleFieldChange('last_name', val)}
+      />
+      <ShowInformation
+        keyText="Endereço de E-mail"
+        keyValue={user?.email || ''}
+        isEditable={isEditing}
+        onChange={(val) => handleFieldChange('email', val)}
+      />
         <ShowInformation
           keyText="N° de Telefone"
           keyValue={user?.phone_number || ''}
