@@ -11,6 +11,7 @@ import ProfileEditData from './(ProfileComponents)/ProfileEditData';
 import ProfileAddressData from './(ProfileComponents)/ProfileEditDataAddress'
 import { USERDATA } from '@/app/Req/ApiUser';
 import APIPROFILESAVE from '@/app/Req/ApiProfileSave';
+import ChangePasswordModal from './(ProfileComponents)/ProfileChangePass'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,6 +20,7 @@ export default function Profile(){
     const [isEditing, setIsEditing] = useState(false);
     const [user, setUser] = useState<any>(null);
     const [formData, setFormData] = useState<any>({});
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
 
     useEffect(() => {
         async function fechUsers(){
@@ -88,6 +90,10 @@ export default function Profile(){
         }
     };
 
+    const changePassword = () => {
+        setShowPasswordModal(true);
+      };
+
     if (loading) return <Loader />;
 
     const userDataObject = user?.data || {};
@@ -95,10 +101,11 @@ export default function Profile(){
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
             <ToastContainer />
+            <ChangePasswordModal visible={showPasswordModal} onClose={() => setShowPasswordModal(false)} />
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
                 <ProfileContainer marginTop={0}>
-                    <ProfileTopEdit user={userDataObject} />
+                    <ProfileTopEdit user={userDataObject} changePassword={changePassword} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
                     <ProfileEditData 
@@ -119,6 +126,7 @@ export default function Profile(){
                             visible={isEditing}
                             onClick={handleCancelClick}
                         />
+                       
                     </div>
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
