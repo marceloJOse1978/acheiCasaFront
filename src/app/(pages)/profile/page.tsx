@@ -1,46 +1,51 @@
 "use client";
 
-import users from '../../objects/obje'; 
 import React, { useState, useEffect } from 'react';
-import ShowInformation from './(ProfileComponents)/ProfileInformation';
-import Title from './(ProfileComponents)/Title';
 import MenuProfile from './(ProfileComponents)/ProfileMenu';
 import EditButon from './(ProfileComponents)/ProfileEditButton';
-import ProfileContainer from './(ProfileComponents)/ProfileContainer'
-import Loader from '@/app/(components)/Loader/loader'
-import ProfileSave from './(ProfileComponents)/ProfileSave'
+import ProfileContainer from './(ProfileComponents)/ProfileContainer';
+import Loader from '@/app/(components)/Loader/loader';
 import { Ban, Pencil, Save } from 'lucide-react';
-import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit'
-import ProfileEditData from './(ProfileComponents)/ProfileEditData'
-import { USERDATA } from '@/app/Req/ApiUser'
-/* import { useState, useEffect } from 'react' */
+import ProfileTopEdit from './(ProfileComponents)/ProfileTopEdit';
+import ProfileEditData from './(ProfileComponents)/ProfileEditData';
+import ProfileAddressData from './(ProfileComponents)/ProfileEditDataAddress'
+import { USERDATA } from '@/app/Req/ApiUser';
+import APIPROFILESAVE from '@/app/Req/ApiProfileSave';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile(){
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
     const [user, setUser] = useState<any>(null);
-  useEffect(()=> {
-    async function fechUsers(){
-      try {
-        const object = await USERDATA();
-        setUser(object);
-        console.log("Dados do user", object)
-      } catch(error) {
-        console.log("erro ao pergar: ", error)
-      }
-    }
-    fechUsers()
-  }, [])
-  const userDataObject = user?.data || null;
-  console.log("objecto data", userDataObject)
+    const [formData, setFormData] = useState<any>({});
+
+    useEffect(() => {
+        async function fechUsers(){
+            try {
+                const object = await USERDATA();
+                setUser(object);
+                console.log("Dados do user", object);
+            } catch(error) {
+                console.log("erro ao pergar: ", error);
+            }
+        }
+        fechUsers();
+    }, []);
+
+    useEffect(() => {
+        if (user?.data) {
+            setFormData(user.data);
+        }
+    }, [user]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setLoading(false)
-        }, 1500)
+            setLoading(false);
+        }, 1500);
 
-        return () => clearTimeout(timer)
-    }, [])
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleEditClick = () => {
         setIsEditing(prev => !prev);
@@ -49,24 +54,63 @@ export default function Profile(){
 
     const handleCancelClick = () => {
         setIsEditing(false);
-        console.log("cancelar")
+        console.log("cancelar");
     };
 
-    if (loading) return <Loader />
+    const handleSaveClick = async () => {
+        try {
+            const result = await APIPROFILESAVE(formData);
+    
+            if (result.success === true) {
+                console.log("Perfil atualizado com sucesso:", result);
+                toast.success("Perfil alterado com sucesso.");
+                setIsEditing(false);
+            } else {
+                console.log("Perfil não atualizado com sucesso:", result);
+                toast.error("Perfil não atualizado com sucesso.");
+    
+                if (result.errors) {
+                    for (const field in result.errors) {
+                        if (Array.isArray(result.errors[field])) {
+                            result.errors[field].forEach((msg: string) => {
+                                toast.error(`${field}: ${msg}`);
+                            });
+                        }
+                    }
+                } else {
+                    toast.error("Erro ao atualizar o perfil. Tente novamente.");
+                }
+            }
+    
+        } catch (error) {
+            console.error("Erro ao salvar perfil:", error);
+            toast.error("Erro inesperado ao salvar perfil.");
+        }
+    };
+
+    if (loading) return <Loader />;
+
+    const userDataObject = user?.data || {};
+
     return (
         <section className="mx-auto px-4 py-8 mt-[98px]">
+            <ToastContainer />
             <MenuProfile profile={true} anuncio={false} history={false} favorite={false} title='Editar Perfil' />
             <div>
                 <ProfileContainer marginTop={0}>
                     <ProfileTopEdit user={userDataObject} />
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                    <ProfileEditData isEditing={isEditing} user={userDataObject} />
+                    <ProfileEditData 
+                        isEditing={isEditing} 
+                        user={formData} 
+                        onChange={setFormData}
+                    />
                     <div className=''>
                         <EditButon 
                             text={isEditing ? 'Salvar' : 'Editar'}
                             icon={isEditing ? Save : Pencil} 
-                            onClick={handleEditClick} 
+                            onClick={isEditing ? handleSaveClick : handleEditClick}
                         />
                         <EditButon
                             text='Cancelar' 
@@ -78,17 +122,13 @@ export default function Profile(){
                     </div>
                 </ProfileContainer>
                 <ProfileContainer marginTop={0}>
-                    <div className=''>
-                        <Title text='Endereço' />
-                        <div className='grid grid-cols-2 gap-[45px] mt-4'>
-                            <ShowInformation keyText='País de Origem' keyValue={userDataObject.country || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Província' keyValue={userDataObject.province || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Município' keyValue={userDataObject.municipality || 'Não disponível'} isEditable={isEditing} />
-                            <ShowInformation keyText='Caixa Postal' keyValue={userDataObject.postal_code || 'Não disponível'} isEditable={isEditing} />
-                        </div>
-                    </div>
+                    <ProfileAddressData  
+                        isEditing={isEditing} 
+                        user={formData} 
+                        onChange={setFormData}
+                    /> 
                 </ProfileContainer>
             </div>
         </section>
-    )
+    );
 }
